@@ -1,0 +1,113 @@
+---
+title: ac
+path: ac
+icon: mdi:air-conditioner
+cards:
+  - type: vertical-stack
+    title: Woonkamer
+    cards:
+      - type: thermostat
+        entity: climate.living_room_ac
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.living_room_ac_power
+            name: Woonkamer
+        show:
+          average: true
+          extrema: true
+        hours_to_show: 24
+        points_per_hour: 60
+        aggregate_func: max
+        line_width: 2
+      - type: entities
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Woonkamer Airco
+            entities:
+              - entity: sensor.living_room_mhi_ac_connected
+              - entity: sensor.living_room_mhi_ac_power
+              - entity: sensor.living_room_mhi_ac_mode
+              - entity: sensor.living_room_mhi_ac_opdata_mode
+              - type: divider
+              - entity: sensor.living_room_mhi_ac_troom
+              - entity: sensor.living_room_mhi_ac_tsetpoint
+              - entity: sensor.living_room_mhi_ac_opdata_tsetpoint
+              - entity: sensor.living_room_mhi_ac_opdata_return_air
+              - entity: sensor.living_room_mhi_ac_outdoor_temperature
+              - type: divider
+              - entity: sensor.living_room_mhi_ac_indoor_fan_speed
+              - entity: sensor.living_room_mhi_ac_outdoor_fan_speed
+              - entity: sensor.living_room_mhi_ac_running_hours_indoor_unit
+              - entity: sensor.living_room_mhi_ac_running_hours_compressor
+              - entity: sensor.living_room_mhi_ac_current
+              - entity: sensor.living_room_mhi_ac_compressor_frequency
+              - type: divider
+              - entity: sensor.living_room_mhi_ac_errorcode
+              - entity: sensor.living_room_mhi_ac_protection_number_compressor
+              - type: divider
+              - entity: script.living_room_mhi_ac_reboot
+              - entity: script.living_room_mhi_ac_defrost_on
+              - entity: script.living_room_mhi_ac_defrost_off
+              - entity: sensor.living_room_mhi_ac_defrost_control
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Hoofdschakelaar
+                entities:
+                  - entity: switch.living_room_ac
+
+  - type: vertical-stack
+    title: Kantoor
+    cards:
+      - type: thermostat
+        entity: climate.office_ac
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.office_ac_power
+            name: Kantoor
+        show:
+          average: true
+          extrema: true
+        hours_to_show: 24
+        points_per_hour: 60
+        line_width: 2
+      - type: entities
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Kantoor Airco
+            entities:
+              - entity: sensor.office_mhi_ac_connected
+              - entity: sensor.office_mhi_ac_power
+              - entity: sensor.office_mhi_ac_mode
+              - entity: sensor.office_mhi_ac_opdata_mode
+              - type: divider
+              - entity: sensor.office_mhi_ac_troom
+              - entity: sensor.office_mhi_ac_tsetpoint
+              - entity: sensor.office_mhi_ac_opdata_tsetpoint
+              - entity: sensor.office_mhi_ac_opdata_return_air
+              - entity: sensor.office_mhi_ac_outdoor_temperature
+              - type: divider
+              - entity: sensor.office_mhi_ac_indoor_fan_speed
+              - entity: sensor.office_mhi_ac_outdoor_fan_speed
+              - entity: sensor.office_mhi_ac_running_hours_indoor_unit
+              - entity: sensor.office_mhi_ac_running_hours_compressor
+              - entity: sensor.office_mhi_ac_current
+              - entity: sensor.office_mhi_ac_compressor_frequency
+              - type: divider
+              - entity: sensor.office_mhi_ac_errorcode
+              - entity: sensor.office_mhi_ac_protection_number_compressor
+              - type: divider
+              - entity: script.office_mhi_ac_reboot
+              - entity: script.office_mhi_ac_defrost_on
+              - entity: script.office_mhi_ac_defrost_off
+              - entity: sensor.office_mhi_ac_defrost_control
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Hoofdschakelaar
+                entities:
+                  - entity: switch.office_ac

@@ -1,0 +1,41 @@
+---
+sensor.hourly_gas_consumption:
+  friendly_name: Huidig gasverbruik
+  device_class: gas
+  icon: mdi:fire
+sensor.power_consumption:
+  friendly_name: Huidig energieverbruik
+  device_class: energy
+sensor.water_consumption:
+  friendly_name: Huidig waterverbruik
+  device_class: power
+  icon: mdi:water
+
+sensor.daily_energy:
+  friendly_name: Energieverbruik vandaag
+  device_class: energy
+  icon: mdi:flash
+sensor.daily_energy_offpeak:
+  friendly_name: Energieverbruik (T1)
+  device_class: energy
+  icon: mdi:weather-night
+sensor.daily_energy_peak:
+  friendly_name: Energieverbruik (T2)
+  device_class: energy
+  icon: mdi:weather-sunny
+
+sensor.daily_gas:
+  friendly_name: Gasverbruik vandaag
+  icon: mdi:fire
+sensor.monthly_gas:
+  friendly_name: Maandelijks gasverbruik
+sensor.yearly_gas:
+  friendly_name: Jaarlijks gasverbruik
+
+sensor.daily_water:
+  friendly_name: Waterverbruik vandaag
+  icon: mdi:water
+
+sensor.washing_machine_daily_energy:
+  device_class: energy
+  unit_of_measurement: kWh

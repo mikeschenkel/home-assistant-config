@@ -1,0 +1,11 @@
+---
+- platform: template
+  sensors:
+    mike_dir_travel:
+      unique_id: 6235cf1f-8703-4518-9b8d-43551b5e58f3
+      value_template: >
+        {{ state_attr("proximity.mike", "dir_of_travel") }}
+    wilma_dir_travel:
+      unique_id: c0951f91-44b9-477d-abdc-a47dd1e3dc66
+      value_template: >
+        {{ state_attr("proximity.wilma", "dir_of_travel") }}

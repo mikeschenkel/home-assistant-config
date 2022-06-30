@@ -1,0 +1,15 @@
+---
+- platform: template
+  sensors:
+    heating_boost_end_time:
+      unique_id: 2404580c-9f90-4576-83d3-1ca40a764535
+      friendly_name: "End Time"
+      value_template: >-
+        {% if is_state('input_number.heating_boost_hour', '0.0') %}
+          ∞
+        {% else %}
+          {{ (now().strftime('%s') | int + (float(states('input_number.heating_boost_hour'))*60*60)) | timestamp_custom('%H:%M', false) }}
+        {% endif %}
+    heating_boost_end_time_tado:
+      unique_id: 22eb0b43-0033-451f-809b-9bc124a6da60
+      value_template: "{{ (float(states('input_number.heating_boost_hour'))*60*60) | timestamp_custom('%H:%M:%S', 0) }}"

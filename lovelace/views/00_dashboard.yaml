@@ -1,0 +1,205 @@
+---
+title: Home
+icon: mdi:home
+path: home
+badges:
+  - entity: person.mike
+  - entity: person.wilma
+cards:
+  - type: custom:simple-weather-card
+    entity: weather.home
+    name: " "
+    backdrop: false
+    secondary_info:
+      - precipitation
+      - precipitation_probability
+  - type: entities
+    entities:
+      - entity: sensor.omrin_sortibak
+      - entity: sensor.omrin_gft
+      - entity: sensor.omrin_papier
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: input_boolean.vacation_mode
+      - entity: input_boolean.sleep_mode
+      - entity: input_boolean.guest_mode
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:multiple-entity-row
+        entity: binary_sensor.esphome_esp01_button
+        secondary_info:
+          entity: automation.notifications_doorbell
+          name: false
+          attribute: last_triggered
+          format: relative
+        name: Deurbel
+        icon: mdi:alarm-bell
+        show_state: false
+        entities:
+          - entity: switch.esphome_esp01_chime
+            name: false
+            toggle: true
+      - entity: binary_sensor.hallway_motion
+        secondary_info: last-changed
+        state_color: true
+      - entity: binary_sensor.hallway_door
+        secondary_info: last-changed
+        state_color: true
+      # - entity: binary_sensor.upstairs_hallway_motion
+      #   secondary_info: last-changed
+      #   state_color: true
+  - type: entities
+    entities:
+      - type: custom:template-entity-row
+        entity: binary_sensor.washing_machine
+        active: "{{ is_state('binary_sensor.washing_machine', 'on') }}"
+        secondary:
+          "{% set on_for = as_timestamp(now()) - as_timestamp(states(\"input_datetime.washing_machine_on\"\
+          )) %} {% set off_for = as_timestamp(now()) - as_timestamp(states(\"input_datetime.washing_machine_off\"\
+          )) %} {% set unit_off_minutes = 'minuut' if (off_for / 60)|round(0) == 1 else 'minuten' %}\
+          \ {% set unit_on_minutes = 'minuut' if (on_for / 60)|round(0) == 1 else 'minuten' %}\
+          \ {% set unit_hours = 'uur' if (off_for / 3600)|round(0) == 1 else 'uren' %}\
+          \ {% if states(\"binary_sensor.washing_machine\") == \"on\" %}\n  Programma is\
+          \ {{ (on_for / 60)|round(0) }} {{unit_on_minutes}} bezig.\n{% else %}\
+          {% if (off_for / 3600)|round(1) < 1 %} {{ (off_for / 60)|round(0) }} {{unit_off_minutes}} geleden\n\
+          \ {% else %} {{ (off_for / 3600)|round(0) }} {{unit_hours}} geleden\n  {% endif %}\
+          {% endif %}"
+        state:
+          "{% if is_state(\"binary_sensor.washing_machine\", \"on\") %}\n  {{\
+          \ states(\"sensor.washing_machine_power\") }} Watt\n{% else %}\n  Uit\n\
+          {% endif %}\n"
+
+  - title: Mechanische ventilatie
+    type: entities
+    entities:
+      - entity: sensor.itho_fan_state
+      - entity: sensor.itho_fan_temperature
+      - entity: sensor.itho_fan_humidity
+
+  - type: entities
+    entities:
+      - switch.adguard_protection
+
+  - type: entities
+    entities:
+      - switch.2_smart_switch_channel_1
+      - switch.2_smart_switch_channel_2
+
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.stookalert_friesland
+        state: "on"
+    card:
+      type: custom:button-card
+      show_name: true
+      icon_height: 50px
+      entity: binary_sensor.stookalert_friesland
+      state:
+        - value: "on"
+          color: red
+          icon: mdi:alert
+
+  - type: horizontal-stack
+    cards:
+      - type: button
+        show_name: false
+        show_state: false
+        icon_height: 75px
+        entity: script.ventilation_preset_low
+        tap_action:
+          action: call-service
+          service: script.turn_on
+          service_data:
+            entity_id: script.ventilation_preset_low
+
+      - type: button
+        show_name: false
+        show_state: false
+        icon_height: 75px
+        entity: script.ventilation_preset_medium
+        tap_action:
+          action: call-service
+          service: script.turn_on
+          service_data:
+            entity_id: script.ventilation_preset_medium
+
+      - type: button
+        show_name: false
+        show_state: false
+        icon_height: 75px
+        entity: script.ventilation_preset_high
+        tap_action:
+          action: call-service
+          service: script.turn_on
+          service_data:
+            entity_id: script.ventilation_preset_high
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            color: auto
+            icon: mdi:weather-sunset-up
+            name: Wake up
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - height: 70px
+            tap_action:
+              action: call-service
+              haptic: success
+              service: script.wake_up
+          - type: custom:button-card
+            color: auto
+            entity: input_boolean.sleep_mode
+            icon: mdi:weather-night
+            name:
+              '[[[ if (entity.state != "off") return "Sleep mode on"; else return  "Go
+              to sleep" ]]]'
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - height: 70px
+            state:
+              - value: "on"
+                color: "var(--paper-item-icon-active-color)"
+              - operator: default
+                color: "var(--primary-text-color)"
+            tap_action:
+              action: call-service
+              haptic: success
+              service: script.going_to_sleep
+
+      - type: horizontal-stack
+        cards:
+          - color: auto
+            icon: mdi:home-map-marker
+            name: Arrive Home
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - height: 70px
+            tap_action:
+              action: call-service
+              haptic: success
+              service: script.arriving
+            type: custom:button-card
+          - color: auto
+            icon: mdi:home-export-outline
+            name: Leave Home
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - height: 70px
+            tap_action:
+              action: call-service
+              haptic: success
+              service: script.leaving
+            type: custom:button-card

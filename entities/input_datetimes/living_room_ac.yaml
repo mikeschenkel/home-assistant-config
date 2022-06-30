@@ -1,0 +1,10 @@
+---
+living_room_ac_on:
+  name: Living Room AC last run started
+  has_date: true
+  has_time: true
+
+living_room_ac_off:
+  name: Living Room AC last run done
+  has_date: true
+  has_time: true

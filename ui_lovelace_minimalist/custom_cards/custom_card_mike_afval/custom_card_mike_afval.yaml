@@ -1,0 +1,111 @@
+---
+custom_card_mike_afval:
+  type: "custom:button-card"
+  template:
+    - "list_3_items"
+  triggers_update: "all"
+  styles:
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template: "custom_card_mike_afval_item"
+        entity: sensor.afval_sortibak
+        styles:
+          icon:
+            - color: "rgba(var(--primary-color), 1)"
+          img_cell:
+            - background-color: "rgba(var(--color-purple), 0.2)"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "custom_card_mike_afval_item"
+        entity: sensor.afval_gft
+        styles:
+          icon:
+            - color: "rgba(var(--color-green), 1)"
+          img_cell:
+            - background-color: "rgba(var(--color-green), 0.2)"
+    item3:
+      card:
+        type: "custom:button-card"
+        template: "custom_card_mike_afval_item"
+        entity: sensor.afval_papier
+        styles:
+          icon:
+            - color: "rgba(var(--color-blue), 1)"
+          img_cell:
+            - background-color: "rgba(var(--color-blue), 0.2)"
+
+custom_card_mike_afval_item:
+  type: "custom:button-card"
+  template:
+    - "vertical_buttons"
+  label: "[[[ return entity.state ]]]"
+  state:
+    - value: "none"
+      styles:
+        icon:
+          - color: "rgba(var(--color-grey), 1)"
+        img_cell:
+          - background-color: "rgba(var(--color-grey), 0.2)"
+    - value: "very_low"
+      styles:
+        icon:
+          - color: "rgba(var(--color-green), 1)"
+        img_cell:
+          - background-color: "rgba(var(--color-green), 0.2)"
+    - value: "low"
+      styles:
+        icon:
+          - color: "rgba(241, 196, 15, 1)"
+        img_cell:
+          - background-color: "rgba(241, 196, 15, 0.2)"
+    - value: "medium"
+      styles:
+        icon:
+          - color: "rgba(243, 156, 18, 1)"
+        img_cell:
+          - background-color: "rgba(243, 156, 18, 0.2)"
+    - value: "high"
+      styles:
+        icon:
+          - color: "rgba(231, 76, 60, 1)"
+        img_cell:
+          - background-color: "rgba(231, 76, 60, 0.2)"
+    - value: "very_high"
+      styles:
+        icon:
+          - color: "rgba(var(--color-pink), 1)"
+        img_cell:
+          - background-color: "rgba(var(--color-pink), 0.2)"
+  styles:
+    card:
+      - box-shadow: "none"
+      - border-radius: "var(--border-radius)"
+    custom_fields:
+      extreme:
+        - border-radius: "50%"
+        - position: "absolute"
+        - margin-left: "auto"
+        - margin-right: "auto"
+        - left: "38px"
+        - right: "0"
+        - top: "8px"
+        - height: "16px"
+        - width: "16px"
+        - border: "2px solid var(--card-background-color)"
+        - font-size: "12px"
+        - line-height: "14px"
+        - background-color: "rgba(var(--color-red),1)"
+        - color: "white"
+  custom_fields:
+    extreme: >
+      [[[
+        if (entity.attributes.days_until == 0){
+          return `<ha-icon icon="mdi:exclamation-thick" style="width: 12px; height: 12px; color: var(--primary-background-color);"></ha-icon>`
+        }
+      ]]]

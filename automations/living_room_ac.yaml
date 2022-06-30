@@ -1,0 +1,91 @@
+---
+- id: f86c3cee-0f10-4deb-a9a5-e8b402f61a7c
+  alias: "Living Room AC: run started or finished"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_room_ac
+  variables:
+    from_state: "{{ trigger.from_state.state }}"
+    to_state: "{{ trigger.to_state.state }}"
+    name: "{{ trigger.entity_id.split('.', 1)[1] }}"
+  condition: "{{ (to_state == 'on' and from_state == 'off') or (to_state == 'off' and from_state == 'on') }}"
+  action:
+    service: input_datetime.set_datetime
+    data:
+      entity_id: "input_datetime.{{ name }}_{{ to_state }}"
+      timestamp: "{{ now().timestamp() }}"
+
+- id: 2ff9d409-3101-44de-9e43-fdc233a7587d
+  alias: "Living Room AC: update counter when run starts"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_room_ac
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sensor.living_room_mhi_ac_defrost_control
+      state: "off"
+  action:
+    service: counter.increment
+    data:
+      entity_id: counter.living_room_ac_runs
+
+- id: fdd2bb91-4755-44db-aba3-eaba087fa7de
+  alias: "Living Room AC: reset run counter every hour"
+  trigger:
+    platform: time_pattern
+    hours: "/1"
+  action:
+    service: counter.reset
+    data:
+      entity_id: counter.living_room_ac_runs
+
+- id: 3c815702-1cb5-4497-8550-eb2b0ccd2cf0
+  alias: "Living Room AC: initiate cooldown to prevent oscillation"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_room_ac
+    to: "off"
+  condition:
+    - condition: numeric_state
+      entity_id: counter.living_room_ac_runs
+      above: 3
+  action:
+    - service: counter.reset
+      data:
+        entity_id: counter.living_room_ac_runs
+    - service: notify.mike_phone
+      data:
+        message: "Living Room AC cooldown"
+
+- id: 6525f7e8-8af8-42cc-b247-413e24aa43b9
+  alias: "Living Room AC: update Troom"
+  trigger:
+    platform: time_pattern
+    seconds: "/10"
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "Living-Room-MHI-AC-Ctrl/set/Troom"
+        payload: "{{ states('sensor.living_room_temperature') }}"
+
+- id: d3b47cf2-46b4-4129-b3c4-1db5a57e3559
+  alias: "Living Room AC: automatically turn on"
+  trigger:
+    - platform: time
+      at: "08:00"
+  condition:
+    - condition: state
+      entity_id: climate.living_room_ac
+      state: "off"
+    - condition: numeric_state
+      entity_id: climate.living_room
+      attribute: temperature
+      below: "21"
+  action:
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: "heat"
+      target:
+        entity_id: climate.living_room_ac

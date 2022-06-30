@@ -1,0 +1,10 @@
+---
+sensor.omrin_sortibak:
+  friendly_name: Restafval
+  entity_picture: /local/icons/afvalbeheer/rest.png
+sensor.omrin_gft:
+  friendly_name: GFT
+  entity_picture: /local/icons/afvalbeheer/gft1.png
+sensor.omrin_papier:
+  friendly_name: Papier
+  entity_picture: /local/icons/afvalbeheer/papier.png

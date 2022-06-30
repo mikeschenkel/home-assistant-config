@@ -1,0 +1,5 @@
+---
+guest_mode:
+  name: Guest Mode
+  icon: mdi:human-male-female
+  initial: off

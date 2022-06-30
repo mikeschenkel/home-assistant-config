@@ -1,0 +1,25 @@
+---
+- name: "Itho Fan state"
+  state_topic: "itho/state"
+  unit_of_measurement: "rpm"
+  icon: "mdi:fan"
+
+- name: "Itho Fan mode"
+  state_topic: "itho/state"
+  value_template: >-
+    {% if   value | int >= 220 %}high
+    {% elif value | int >= 120 %}medium
+    {% elif value | int <  120 %}low
+    {% endif %}
+
+- name: "Itho Fan temperature"
+  state_topic: "itho/ithostatus"
+  value_template: "{{ state_attr('fan.nrg_itho_eb1c_fan', 'temp') | round(1) }}"
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Itho Fan humidity"
+  state_topic: "itho/ithostatus"
+  value_template: "{{ state_attr('fan.nrg_itho_eb1c_fan', 'hum') | round(0) }}"
+  device_class: humidity
+  unit_of_measurement: "%"

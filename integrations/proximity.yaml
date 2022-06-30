@@ -1,0 +1,17 @@
+---
+proximity:
+  home:
+    devices:
+      - device_tracker.iphone_mike
+      - device_tracker.iphone_wilma
+    tolerance: 50
+  mike:
+    zone: home
+    devices:
+      - device_tracker.iphone_mike
+    tolerance: 50
+  wilma:
+    zone: home
+    devices:
+      - device_tracker.iphone_wilma
+    tolerance: 50

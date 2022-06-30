@@ -1,0 +1,184 @@
+---
+# ------------------------------------------------------------------------------
+# Hallway
+# ------------------------------------------------------------------------------
+
+- id: 54768edd-8237-4200-a95a-945de2e91317
+  alias: "Lights: turn on hallway"
+  trigger:
+    - platform: state
+      entity_id: light.hallway_ceiling
+      from: "off"
+      to: "on"
+  action:
+    service: light.turn_on
+    entity_id: light.hallway_ceiling
+    data:
+      brightness_pct: "{{ states('sensor.hallway_lights_brightness') }}"
+
+- id: 9d13cc22-bbb9-4714-b90f-457a73ffa6b8
+  alias: "Lights: automatically turn on hallway"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion
+      from: "off"
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.hallway_door
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.hallway_ceiling
+      state: "off"
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state.attributes.elevation }}"
+      below: 5
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.hallway_ceiling
+
+- id: b7aac377-759e-4ae0-983b-831d23775ae4
+  alias: "Lights: automatically turn off hallway"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion
+      from: "on"
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: light.hallway_ceiling
+      state: "on"
+    - condition: state
+      entity_id: binary_sensor.hallway_door
+      state: "off"
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state.attributes.elevation }}"
+      below: 5
+  action:
+    service: light.turn_off
+    entity_id:
+      - light.hallway_ceiling
+
+# ------------------------------------------------------------------------------
+# Upstairs Hallway
+# ------------------------------------------------------------------------------
+
+- id: d06d5b62-132e-421a-b561-c795800955f0
+  alias: "Lights: turn on upstairs hallway"
+  trigger:
+    - platform: state
+      entity_id: light.upstairs_hallway_ceiling
+      from: "off"
+      to: "on"
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.upstairs_hallway_ceiling
+    data:
+      brightness_pct: "{{ states('sensor.hallway_lights_brightness') }}"
+
+- id: 56419e4e-ffd0-4dc0-a3bd-3f67d569b05b
+  alias: "Lights: automatically dim upstairs hallway when already on"
+  trigger:
+    platform: time_pattern
+    minutes: "/10"
+  condition:
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state.attributes.elevation }}"
+      below: 5
+    - condition: state
+      entity_id: light.upstairs_hallway_ceiling
+      state: "on"
+  action:
+    service: light.turn_on
+    entity_id: light.upstairs_hallway_ceiling
+    data:
+      brightness_pct: "{{ states('sensor.hallway_lights_brightness') }}"
+
+# ------------------------------------------------------------------------------
+# Kitchen
+# ------------------------------------------------------------------------------
+
+- id: eaf609b3-ce06-4ab3-86c8-2ade21b63cdf
+  alias: "Lights: automatically turn on kitchen"
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state.attributes.elevation }}"
+      below: 5
+  condition:
+    - condition: state
+      entity_id: light.kitchen_lights
+      state: "off"
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.kitchen_lights
+
+# ------------------------------------------------------------------------------
+# Dining Table
+# ------------------------------------------------------------------------------
+
+- id: 61f0d3cf-01ff-40ff-a271-1b4000029498
+  alias: "Lights: turn on dining table"
+  trigger:
+    - platform: state
+      entity_id: light.dining_table
+      from: "off"
+      to: "on"
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.dining_table
+    data:
+      brightness_pct: 80
+
+# ------------------------------------------------------------------------------
+# General
+# ------------------------------------------------------------------------------
+
+- id: b3397c5c-db5c-4e83-8aab-17e07b9f0ce3
+  alias: "Lights: automatically turn on lights when no one is home"
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state.attributes.elevation }}"
+      below: 0
+  condition:
+    - condition: state
+      entity_id: binary_sensor.no_one_home
+      state: "on"
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.kitchen_lights
+      - light.living_room_lights
+      - light.upstairs_hallway_ceiling
+
+# ------------------------------------------------------------------------------
+# Extra checks
+# ------------------------------------------------------------------------------
+
+- id: 548b1782-464e-443a-ad2f-4b059f72bdca
+  alias: "Lights: turn off hallway (extra check)"
+  description: In case the other automation failed
+  trigger:
+    platform: time_pattern
+    minutes: "/15"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.activity_in_hallway
+      state: "off"
+      for:
+        minutes: 15
+    - condition: state
+      entity_id: light.hallway_ceiling
+      state: "on"
+  action:
+    service: light.turn_off
+    entity_id: light.hallway_ceiling

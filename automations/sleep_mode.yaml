@@ -1,0 +1,8 @@
+---
+- id: 51b040ee-a993-44ec-87aa-029642d7a2a2
+  alias: "Sleep mode: automatically turn off at 7AM"
+  trigger:
+    - platform: time
+      at: "07:00"
+  action:
+    service: script.wake_up

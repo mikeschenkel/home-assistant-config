@@ -1,0 +1,91 @@
+---
+custom_card_mike_ventilation:
+  size: "20px"
+  triggers_update: "all"
+  show_icon: false
+  show_label: false
+  show_name: false
+  styles:
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-columns: "1fr"
+      - grid-template-rows: "min-content  min-content"
+      - row-gap: "12px"
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        template:
+          - "icon_info_bg"
+        tap_action:
+          action: "more-info"
+        entity: sensor.itho_fan_state
+        name: Mechanische Ventilatie
+        label: Aan
+        styles:
+          card:
+            - box-shadow: "none"
+            - padding: "0px"
+    item2:
+      card:
+        type: "custom:button-card"
+        template: "list_3_items"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.ventilation_preset_low
+              icon: "mdi:fan-speed-1"
+              entity: sensor.itho_fan_mode
+              state:
+                - value: low
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-yellow), 1)"
+                    img_cell:
+                      - background-color: "rgba(var(--color-yellow), 0.2)"
+          item2:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.ventilation_preset_medium
+              icon: "mdi:fan-speed-2"
+              entity: sensor.itho_fan_mode
+              state:
+                - value: medium
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-yellow), 1)"
+                    img_cell:
+                      - background-color: "rgba(var(--color-yellow), 0.2)"
+          item3:
+            card:
+              type: "custom:button-card"
+              template: "widget_icon"
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.ventilation_preset_high
+              icon: "mdi:fan-speed-3"
+              entity: sensor.itho_fan_mode
+              state:
+                - value: high
+                  styles:
+                    icon:
+                      - color: "rgba(var(--color-yellow), 1)"
+                    img_cell:
+                      - background-color: "rgba(var(--color-yellow), 0.2)"

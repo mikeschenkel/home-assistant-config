@@ -1,0 +1,97 @@
+esphome:
+  name: esp03
+  platform: ESP32
+  board: nodemcu-32s
+  
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: esp03
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_esp03_api_password
+
+# Enable over-the-air updates
+ota:
+  password: !secret esphome_esp03_ota_password
+
+captive_portal:
+
+esp32_ble_tracker:
+
+switch:
+  - platform: gpio
+    name: "esp03-Onboard-LED"
+    pin: 2
+    inverted: True
+  - platform: restart
+    name: esp03-restart
+    id: restart_switch
+
+sensor:
+  - platform: uptime
+    name: "esp03 Uptime Sensor"
+    
+  - platform: wifi_signal
+    name: "esp03 WiFi Signal"
+    update_interval: 60s
+
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:9C:B1:CB"
+    temperature:
+      name: "MiThermometer01-Temperature"
+    humidity:
+      name: "MiThermometer01-Humidity"
+    battery_level:
+      name: "MiThermometer01-Battery-Level"
+    battery_voltage:
+      name: "MiThermometer01-Battery-Voltage"
+
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:C1:37:E4"
+    temperature:
+      name: "MiThermometer02-Temperature"
+    humidity:
+      name: "MiThermometer02-Humidity"
+    battery_level:
+      name: "MiThermometer02-Battery-Level"
+    battery_voltage:
+      name: "MiThermometer02-Battery-Voltage"
+
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:EB:45:6E"
+    temperature:
+      name: "MiThermometer03-Temperature"
+    humidity:
+      name: "MiThermometer03-Humidity"
+    battery_level:
+      name: "MiThermometer03-Battery-Level"
+    battery_voltage:
+      name: "MiThermometer03-Battery-Voltage"
+      
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:48:E5:7E"
+    temperature:
+      name: "MiThermometer04-Temperature"
+    humidity:
+      name: "MiThermometer04-Humidity"
+    battery_level:
+      name: "MiThermometer04-Battery-Level"
+    battery_voltage:
+      name: "MiThermometer04-Battery-Voltage"
+
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:BF:79:D5"
+    temperature:
+      name: "MiThermometer05-Temperature"
+    humidity:
+      name: "MiThermometer05-Humidity"
+    battery_level:
+      name: "MiThermometer05-Battery-Level"
+    battery_voltage:
+      name: "MiThermometer05-Battery-Voltage"

@@ -1,0 +1,21 @@
+---
+office_mhi_ac_reboot:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Office-MHI-AC-Ctrl/reset
+        payload: "reset"
+
+office_mhi_ac_defrost_on:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Office-MHI-AC-Ctrl/OpData/DEFROST
+        payload: "on"
+
+office_mhi_ac_defrost_off:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Office-MHI-AC-Ctrl/OpData/DEFROST
+        payload: "off"

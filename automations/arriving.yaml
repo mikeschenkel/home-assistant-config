@@ -1,0 +1,10 @@
+---
+- id: daf17288-b0eb-4a85-8cc4-999a7f7c412e
+  alias: "Arriving: automatically run arriving script"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.someone_in_the_house_in_last_hour
+    from: "off"
+    to: "on"
+  action:
+    - service: script.arriving

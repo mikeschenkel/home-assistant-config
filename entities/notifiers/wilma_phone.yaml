@@ -1,0 +1,5 @@
+---
+- platform: group
+  name: wilma_phone
+  services:
+    - service: mobile_app_iphone_van_w_v

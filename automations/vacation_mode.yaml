@@ -1,0 +1,42 @@
+---
+- id: fdf27ec1-015a-4b54-8fcc-65b7280d9116
+  alias: "Vacation mode: auto turn on"
+  trigger:
+    - platform: state
+      entity_id: group.persons
+      from: "home"
+      to: "not_home"
+      for: "24:00:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.vacation_mode
+    - service: notify.all_phones
+      data:
+        title: "Vacation mode"
+        message: "No one at home for 24 hours, switching on vacation mode."
+
+- id: 4ebf9d8f-e444-4f32-aeb3-4d45cf5a986c
+  alias: "Vacation mode: auto turn off"
+  trigger:
+    - platform: state
+      entity_id: group.persons
+      from: "not_home"
+      to: "home"
+  condition:
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: "off"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.vacation_mode
+    - service: notify.all_phones
+      data:
+        title: "Vacation mode"
+        message: "Welcome back! Switching off the vacation mode."

@@ -1,0 +1,6 @@
+---
+- platform: group
+  unique_id: 5a804e6b-4f08-4786-a79a-2b357b3c36b5
+  name: Automatic lights
+  entities:
+    - light.hallway_ceiling

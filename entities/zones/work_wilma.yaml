@@ -1,0 +1,6 @@
+---
+- name: Werk
+  latitude: !secret work_wilma_latitude
+  longitude: !secret work_wilma_longitude
+  radius: 300
+  icon: mdi:briefcase

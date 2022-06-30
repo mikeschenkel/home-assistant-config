@@ -1,0 +1,119 @@
+---
+title: "Home"
+path: "home"
+icon: mdi:home
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: chip_icon_state
+        variables:
+          ulm_chip_icon_state_icon: "⚡️"
+          ulm_chip_icon_state_entity: sensor.power_consumption
+      - type: custom:state-switch
+        entity: binary_sensor.washing_machine
+        states:
+          "on":
+            type: "custom:button-card"
+            template: chip_mdi_icon_state
+            variables:
+              ulm_chip_mdi_icon_state_entity: binary_sensor.washing_machine
+              ulm_chip_mdi_icon_state_icon: mdi:washing-machine
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: custom_card_mike_welcome
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_person
+            entity: person.mike
+            variables:
+              ulm_card_person_entity: person.mike
+              ulm_card_person_use_entity_picture: true
+          - type: "custom:button-card"
+            template: card_person
+            entity: person.wilma
+            variables:
+              ulm_card_person_entity: person.wilma
+              ulm_card_person_use_entity_picture: true
+              ulm_card_person_zone1: zone.werk
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_person_info
+            entity: person.mike
+            variables:
+              ulm_card_person_entity: person.mike
+              ulm_card_person_use_entity_picture: true
+              ulm_card_person_driving_entity: binary_sensor.mike_is_driving
+              ulm_card_person_commute_entity: sensor.eta_home_mike
+              ulm_card_person_commute_icon: mdi:car
+          - type: "custom:button-card"
+            template: card_person_info
+            entity: person.wilma
+            variables:
+              ulm_card_person_entity: person.wilma
+              ulm_card_person_use_entity_picture: true
+              ulm_card_person_zone1: zone.werk
+              ulm_card_person_driving_entity: input_boolean.dummy
+              ulm_card_person_commute_entity: sensor.eta_home_wilma
+              ulm_card_person_commute_icon: mdi:car
+
+      - type: custom:state-switch
+        entity: media_player.chromecast
+        states:
+          "playing":
+            type: media-control
+            entity: media_player.chromecast
+
+      - type: "custom:button-card"
+        template: custom_card_mike_afval
+
+      - type: "custom:button-card"
+        template: custom_card_mike_ventilation
+
+      - type: horizontal-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: card_title
+                label: Mechanische Ventilatie
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                show_name: false
+                show_state: false
+                size: "48px"
+                entity: script.ventilation_preset_low
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.ventilation_preset_low
+              - type: "custom:button-card"
+                show_name: false
+                show_state: false
+                size: "48px"
+                entity: script.ventilation_preset_medium
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.ventilation_preset_medium
+              - type: "custom:button-card"
+                show_name: false
+                show_state: false
+                size: "48px"
+                entity: script.ventilation_preset_high
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.ventilation_preset_high

@@ -1,0 +1,29 @@
+---
+- id: bbbeb06e-b5a6-4127-8cfd-f8f3104e9b8c
+  alias: "Washing machine: started or finished"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.washing_machine
+  variables:
+    from_state: "{{ trigger.from_state.state }}"
+    to_state: "{{ trigger.to_state.state }}"
+    name: "{{ trigger.entity_id.split('.', 1)[1] }}"
+  condition: "{{ (to_state == 'on' and from_state == 'off') or (to_state == 'off' and from_state == 'on') }}"
+  action:
+    service: input_datetime.set_datetime
+    data:
+      entity_id: "input_datetime.{{ name }}_{{ to_state }}"
+      timestamp: "{{ now().timestamp() }}"
+
+- id: b33e3f2e-b1e4-4357-a83b-ac800904e455
+  alias: "Washing machine: send notification when washing machine is done"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.washing_machine
+    from: "on"
+    to: "off"
+  action:
+    service: "{{ states('sensor.nearest_phone_notify') }}"
+    data:
+      title: "Wasmachine"
+      message: "Wasmachine is klaar! 👚👕"

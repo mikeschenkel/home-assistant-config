@@ -1,0 +1,6 @@
+---
+leaving:
+  alias: Leaving the house
+  sequence:
+    - service: script.ventilation_preset_low
+    - service: script.turn_off_everything

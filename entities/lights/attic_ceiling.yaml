@@ -1,0 +1,4 @@
+---
+- platform: switch
+  name: Attic Ceiling
+  entity_id: switch.attic_ceiling

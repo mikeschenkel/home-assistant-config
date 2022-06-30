@@ -1,0 +1,85 @@
+---
+- platform: template
+  sensors:
+    living_room_climate:
+      unique_id: 3268fc8c-80ee-4b0a-aa51-cc03f7740834
+      value_template: >
+        {% if is_state_attr('climate.living_room', 'hvac_action', 'heating') %}on
+        {% else %}off
+        {% endif %}
+      icon_template: >
+        {% if is_state_attr('climate.living_room', 'hvac_action', 'heating') %}mdi:radiator
+        {% elif is_state('climate.living_room', 'heat') %}mdi:thermostat
+        {% elif is_state('climate.living_room', 'auto') %}mdi:radiator-disabled
+        {% elif is_state('climate.living_room', 'off') %}mdi:radiator-off
+        {% else %}mdi:thermometer
+        {% endif %}
+      attribute_templates:
+        current_temperature: "{{ state_attr('climate.living_room', 'current_temperature') }}"
+        current_humidity: "{{ state_attr('climate.living_room', 'current_humidity') }}"
+        target_temperature: >
+          {% if is_state('climate.living_room', 'off') %}Off
+          {% else %}{{ state_attr('climate.living_room', 'temperature') }} °C
+          {% endif %}
+
+    office_climate:
+      unique_id: 7862658e-a104-445b-b01c-f83dcfdf00b9
+      value_template: >
+        {% if is_state_attr('climate.office', 'hvac_action', 'heating') %}on
+        {% else %}off
+        {% endif %}
+      icon_template: >
+        {% if is_state_attr('climate.office', 'hvac_action', 'heating') %}mdi:radiator
+        {% elif is_state('climate.office', 'heat') %}mdi:thermostat
+        {% elif is_state('climate.office', 'auto') %}mdi:radiator-disabled
+        {% elif is_state('climate.office', 'off') %}mdi:radiator-off
+        {% else %}mdi:thermometer
+        {% endif %}
+      attribute_templates:
+        current_temperature: "{{ state_attr('climate.office', 'current_temperature') }}"
+        current_humidity: "{{ state_attr('climate.office', 'current_humidity') }}"
+        target_temperature: >
+          {% if is_state('climate.office', 'off') %}Off
+          {% else %}{{ state_attr('climate.office', 'temperature') }} °C
+          {% endif %}
+
+    bathroom_climate:
+      value_template: >
+        {% if is_state_attr('climate.bathroom', 'hvac_action', 'heating') %}on
+        {% else %}off
+        {% endif %}
+      icon_template: >
+        {% if is_state_attr('climate.bathroom', 'hvac_action', 'heating') %}mdi:radiator
+        {% elif is_state('climate.bathroom', 'heat') %}mdi:thermostat
+        {% elif is_state('climate.bathroom', 'auto') %}mdi:radiator-disabled
+        {% elif is_state('climate.bathroom', 'off') %}mdi:radiator-off
+        {% else %}mdi:thermometer
+        {% endif %}
+      attribute_templates:
+        current_temperature: "{{ state_attr('climate.bathroom', 'current_temperature') }}"
+        current_humidity: "{{ state_attr('climate.bathroom', 'current_humidity') }}"
+        target_temperature: >
+          {% if is_state('climate.bathroom', 'off') %}Off
+          {% else %}{{ state_attr('climate.bathroom', 'temperature') }} °C
+          {% endif %}
+
+    bedroom_climate:
+      unique_id: 9b3ec0a8-c9b7-4c22-87eb-d6c43eff3cde
+      value_template: >
+        {% if is_state_attr('climate.bedroom', 'hvac_action', 'heating') %}on
+        {% else %}off
+        {% endif %}
+      icon_template: >
+        {% if is_state_attr('climate.bedroom', 'hvac_action', 'heating') %}mdi:radiator
+        {% elif is_state('climate.bedroom', 'heat') %}mdi:thermostat
+        {% elif is_state('climate.bedroom', 'auto') %}mdi:radiator-disabled
+        {% elif is_state('climate.bedroom', 'off') %}mdi:radiator-off
+        {% else %}mdi:thermometer
+        {% endif %}
+      attribute_templates:
+        current_temperature: "{{ state_attr('climate.bedroom', 'current_temperature') }}"
+        current_humidity: "{{ state_attr('climate.bedroom', 'current_humidity') }}"
+        target_temperature: >
+          {% if is_state('climate.bedroom', 'off') %}Off
+          {% else %}{{ state_attr('climate.bedroom', 'temperature') }} °C
+          {% endif %}

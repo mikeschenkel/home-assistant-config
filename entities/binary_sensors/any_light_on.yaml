@@ -1,0 +1,15 @@
+---
+- platform: template
+  sensors:
+    any_light_on:
+      unique_id: 5774b4b5-43eb-444b-be64-1b84c1593732
+      friendly_name: Any light is on
+      value_template: >
+        {% set automatic_lights_on = is_state("light.automatic_lights", "on") %}
+        {% set upstairs_hallway_lights_on = is_state("light.upstairs_hallway_ceiling", "on") %}
+        {% set attic_lights_on = is_state("light.attic_ceiling", "on") %}
+        {% set bedroom_lights_on = is_state("light.bedroom_lights", "on") %}
+        {% set kitchen_lights_on = is_state("light.kitchen_lights", "on") %}
+        {% set dining_table_lights_on = is_state("light.dining_table", "on") %}
+        {% set living_room_lights_on = is_state("light.living_room_lights", "on") %}
+        {{ automatic_lights_on or upstairs_hallway_lights_on or attic_lights_on or bedroom_lights_on or kitchen_lights_on or dining_table_lights_on or living_room_lights_on or kitchen_lights_on }}

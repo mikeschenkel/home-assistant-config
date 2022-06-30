@@ -1,0 +1,11 @@
+---
+- platform: template
+  sensors:
+    hallway_lights_brightness:
+      unique_id: 633894dd-4ddc-4333-b096-412157e0e08d
+      value_template: >
+        {% if   state_attr("sun.sun", "elevation") < -45 %}25
+        {% elif state_attr("sun.sun", "elevation") <  -5 %}50
+        {% elif state_attr("sun.sun", "elevation") <   5 %}75
+        {% else %}100
+        {% endif %}

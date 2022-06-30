@@ -1,0 +1,6 @@
+---
+office_ac_runs:
+  name: Office AC runs
+  initial: 0
+  step: 1
+  maximum: 5

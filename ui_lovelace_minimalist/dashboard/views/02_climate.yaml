@@ -1,0 +1,112 @@
+---
+title: Klimaat
+path: climate
+icon: mdi:home-thermometer
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: chip_navigate
+        label: ""
+        variables:
+          ulm_chip_navigate_path: /ui-lovelace-minimalist/home/
+          ulm_chip_navigate_icon: mdi:home
+
+  - type: "custom:button-card"
+    template: card_title
+    name: "Klimaat"
+    label: '[[[ return "Buitentemperatuur is nu " + states["weather.home"].attributes.temperature + "°C" ]]]'
+
+  - type: "custom:button-card"
+    template: card_title
+    name: "Temperatuur"
+    # label: "Temperatuur"
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Woonkamer
+          ulm_card_graph_entity: sensor.living_room_temperature
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Kantoor
+          ulm_card_graph_entity: sensor.mithermometer01_temperature
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Badkamer
+          ulm_card_graph_entity: sensor.mithermometer02_temperature
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Slaapkamer
+          ulm_card_graph_entity: sensor.mithermometer03_temperature
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Logeerkamer
+          ulm_card_graph_entity: sensor.mithermometer04_temperature
+      - type: "custom:button-card"
+        template: custom_card_mike_graph
+        variables:
+          ulm_card_graph_name: Zolder
+          ulm_card_graph_entity: sensor.mithermometer05_temperature
+
+  - type: "custom:button-card"
+    template: card_title
+    name: "Luchtvochtigheid"
+    # label: "Luchtvochtigheid"
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Woonkamer
+          ulm_card_graph_entity: sensor.living_room_humidity
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Kantoor
+          ulm_card_graph_entity: sensor.mithermometer01_humidity
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Badkamer
+          ulm_card_graph_entity: sensor.mithermometer02_humidity
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Slaapkamer
+          ulm_card_graph_entity: sensor.mithermometer03_humidity
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Logeerkamer
+          ulm_card_graph_entity: sensor.mithermometer04_humidity
+      - type: "custom:button-card"
+        template: card_graph
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Zolder
+          ulm_card_graph_entity: sensor.mithermometer05_humidity

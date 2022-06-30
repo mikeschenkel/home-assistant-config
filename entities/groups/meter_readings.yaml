@@ -1,0 +1,13 @@
+---
+meter_readings:
+  name: Meter readings
+  entities:
+    - sensor.power_consumption
+    - sensor.power_consumption_phase_l1
+    - sensor.energy_consumption_tarif_1
+    - sensor.energy_consumption_tarif_2
+    - sensor.power_production
+    - sensor.power_production_phase_l1
+    - sensor.energy_production_tarif_1
+    - sensor.energy_production_tarif_2
+    - sensor.gas_consumption

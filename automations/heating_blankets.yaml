@@ -1,0 +1,14 @@
+---
+- id: ea9ed85b-6154-4749-b386-6943c30c4346
+  alias: "Heating blankets: automatically turn off heating blanket"
+  trigger:
+    - platform: state
+      entity_id:
+        - switch.2_smart_switch_channel_1
+        - switch.2_smart_switch_channel_2
+      to: "on"
+      for: "02:30:00"
+  action:
+    service: switch.turn_off
+    data_template:
+      entity_id: "{{ trigger.entity_id }}"

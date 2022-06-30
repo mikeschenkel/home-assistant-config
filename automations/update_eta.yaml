@@ -1,0 +1,19 @@
+---
+- id: 0876acd9-ef4f-4474-bd8c-875b399fcf79
+  alias: "ETA: update Waze ETA when someone is driving"
+  trigger:
+    platform: time_pattern
+    minutes: "/1"
+  condition:
+    condition: state
+    entity_id:
+      - binary_sensor.mike_is_driving
+      - binary_sensor.wilma_is_driving
+    match: any
+    state: "on"
+  action:
+    service: homeassistant.update_entity
+    target:
+      entity_id:
+        - sensor.eta_home_mike
+        - sensor.eta_home_wilma

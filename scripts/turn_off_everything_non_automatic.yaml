@@ -1,0 +1,14 @@
+---
+turn_off_everything_non_automatic:
+  alias: Turn off everything non automatic
+  mode: parallel
+  sequence:
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.upstairs_hallway_ceiling
+          - light.attic_ceiling
+          - light.bedroom_lights
+          - light.kitchen_lights
+          - light.dining_table
+          - light.living_room_lights

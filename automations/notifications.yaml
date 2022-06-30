@@ -1,0 +1,25 @@
+---
+- id: 9070e70f-3d3d-4f14-8c40-a1b2ca029500
+  alias: "Notifications: Wilma left work"
+  mode: single
+  trigger:
+    platform: zone
+    entity_id: person.wilma
+    zone: zone.werk
+    event: leave
+  action:
+    service: notify.mike_phone
+    data:
+      message: "Wilma left work"
+
+- id: 17493302-ec90-4ba0-9bd5-9e3698e96852
+  alias: "Notifications: notify if motion detected"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor
+      from: "off"
+      to: "on"
+  action:
+    - service: notify.mike_phone
+      data:
+        message: Motion detected!

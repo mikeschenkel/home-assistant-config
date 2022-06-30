@@ -1,0 +1,26 @@
+---
+# Core Configuration
+homeassistant:
+  customize: !include_dir_merge_named customizations/entities
+  packages: !include_dir_named integrations
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+frontend:
+  # We can define additional/custom themes for the frontend here.
+  themes: !include_dir_merge_named themes
+
+# Discover devices automatically
+discovery:
+
+# Managed via UI
+automation: !include automations.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+
+# Others
+automation split: !include_dir_merge_list automations
+script split: !include_dir_list scripts
+
+browser_mod:

@@ -1,0 +1,30 @@
+---
+title: appliances
+path: appliances
+icon: mdi:gauge
+cards:
+  - type: entities
+    entities:
+      - entity: sensor.washing_machine_daily_energy
+      - entity: sensor.washing_machine_yearly_energy
+
+  - type: entities
+    entities:
+      - entity: sensor.living_room_ac_daily_energy
+      - entity: sensor.living_room_ac_monthly_energy
+      - entity: sensor.living_room_ac_yearly_energy
+
+  - type: entities
+    entities:
+      - entity: sensor.office_ac_daily_energy
+      - entity: sensor.office_ac_monthly_energy
+      - entity: sensor.office_ac_yearly_energy
+
+  - type: entities
+    entities:
+      - entity: sensor.daily_ac_consumption
+      - entity: sensor.monthly_ac_consumption
+      - entity: sensor.yearly_ac_consumption
+      - entity: sensor.ac_daily_energy
+      - entity: sensor.ac_monthly_energy
+      - entity: sensor.ac_yearly_energy

@@ -1,0 +1,53 @@
+---
+# ------------------------------------------------------------------------------
+# Living Room
+# ------------------------------------------------------------------------------
+
+- id: fabac555-0833-4231-9648-cfa1682bd9b7
+  alias: "Control switches: Living Room Aqara Wireless Mini Switch"
+  mode: parallel
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+  action:
+    choose:
+      # Toggle lights in the living room
+      - conditions: "{{ trigger.event.data.event == 1002 }}" # Single click
+        sequence:
+          - service: light.toggle
+            entity_id: light.living_room_lights
+
+# ------------------------------------------------------------------------------
+# Bathroom
+# ------------------------------------------------------------------------------
+
+- id: 046bb60c-5f3d-4155-b72b-36161214543e
+  alias: "Control switches: Bathroom Aqara Wireless Mini Switch"
+  mode: parallel
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bathroom_switch
+  action:
+    choose:
+      # Turn on ventilation
+      - conditions: "{{ trigger.event.data.event == 1002 }}" # Single click
+        sequence:
+          - service: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.someone_showering
+          - service: script.ventilation_preset_high
+          - delay: "00:30:00"
+          - service: script.ventilation_preset_medium
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.someone_showering
+      - conditions: "{{ trigger.event.data.event == 1001 }}" # Long click
+        sequence:
+          - service: script.ventilation_preset_medium
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.someone_showering

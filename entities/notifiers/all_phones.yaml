@@ -1,0 +1,6 @@
+---
+- platform: group
+  name: all_phones
+  services:
+    - service: mobile_app_iphone_van_mike
+    - service: mobile_app_iphone_van_w_v

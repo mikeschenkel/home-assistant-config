@@ -1,0 +1,5 @@
+---
+sleep_mode:
+  icon: mdi:weather-night
+  name: Sleep Mode
+  initial: off

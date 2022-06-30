@@ -1,0 +1,9 @@
+---
+- platform: template
+  sensors:
+    anything_on:
+      unique_id: f7fe4b66-ff68-465e-b9a0-b385c3ebc87f
+      friendly_name: Anything is on
+      value_template: >
+        {% set light_on = is_state("binary_sensor.any_light_on", "on") %}
+        {{ light_on }}

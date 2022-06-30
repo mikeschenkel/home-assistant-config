@@ -1,0 +1,17 @@
+---
+going_to_sleep:
+  alias: Going to sleep
+  mode: parallel
+  sequence:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.sleep_mode
+    - service: script.turn_off_everything_non_automatic
+    - service: script.ventilation_preset_low
+
+wake_up:
+  alias: Wake up
+  mode: parallel
+  sequence:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.sleep_mode
+    - service: script.ventilation_preset_medium

@@ -1,0 +1,212 @@
+---
+title: Klimaat
+path: climate
+icon: mdi:thermometer
+cards:
+  - type: entities
+    entities:
+      - entity: binary_sensor.living_room_climate
+        type: custom:multiple-entity-row
+        name: Woonkamer
+        show_state: false
+        state_color: true
+        secondary_info:
+          attribute: target_temperature
+        entities:
+          - attribute: current_temperature
+            name: temperatuur
+            unit: "°C"
+            tap_action:
+              action: more-info
+              entity: sensor.living_room_temperature
+          - attribute: current_humidity
+            name: luchtvochtigheid
+            unit: "%"
+            tap_action:
+              action: more-info
+              entity: sensor.living_room_humidity
+      - entity: binary_sensor.office_climate
+        type: custom:multiple-entity-row
+        name: Kantoor
+        show_state: false
+        state_color: true
+        secondary_info:
+          attribute: target_temperature
+        entities:
+          - attribute: current_temperature
+            name: temperatuur
+            unit: "°C"
+            tap_action:
+              action: more-info
+              entity: sensor.office_temperature
+          - attribute: current_humidity
+            name: luchtvochtigheid
+            unit: "%"
+            tap_action:
+              action: more-info
+              entity: sensor.office_humidity
+      - entity: binary_sensor.bathroom_climate
+        type: custom:multiple-entity-row
+        name: Badkamer
+        show_state: false
+        state_color: true
+        secondary_info:
+          attribute: target_temperature
+        entities:
+          - attribute: current_temperature
+            name: temperatuur
+            unit: "°C"
+            tap_action:
+              action: more-info
+              entity: sensor.bathroom_temperature
+          - attribute: current_humidity
+            name: luchtvochtigheid
+            unit: "%"
+            tap_action:
+              action: more-info
+              entity: sensor.bathroom_humidity
+      - entity: binary_sensor.bedroom_climate
+        type: custom:multiple-entity-row
+        name: Slaapkamer
+        show_state: false
+        state_color: true
+        tap_action:
+          entity: climate.bedroom
+        secondary_info:
+          attribute: target_temperature
+        entities:
+          - attribute: current_temperature
+            name: temperatuur
+            unit: "°C"
+            tap_action:
+              action: more-info
+              entity: sensor.bedroom_temperature
+          - attribute: current_humidity
+            name: luchtvochtigheid
+            unit: "%"
+            tap_action:
+              action: more-info
+              entity: sensor.bedroom_humidity
+
+  - type: custom:mini-graph-card
+    name: Temperature Graph - 24Hrs
+    hours_to_show: 24
+    line_width: 2
+    points_per_hour: 1
+    show:
+      points: hover
+    entities:
+      - entity: sensor.living_room_temperature
+        name: Woonkamer
+      - entity: sensor.office_temperature
+        name: Kantoor
+      - entity: sensor.bathroom_temperature
+        name: Badkamer
+      - entity: sensor.bedroom_temperature
+        name: Slaapkamer
+      - entity: sensor.attic_temperature
+        name: Zolder
+
+  - type: custom:mini-graph-card
+    name: Humidity Graph - 24Hrs
+    hours_to_show: 24
+    line_width: 2
+    points_per_hour: 1
+    show:
+      points: hover
+    entities:
+      - entity: sensor.living_room_humidity
+        name: Woonkamer
+      - entity: sensor.office_humidity
+        name: Kantoor
+      - entity: sensor.bathroom_humidity
+        name: Badkamer
+      - entity: sensor.bedroom_humidity
+        name: Slaapkamer
+      - entity: sensor.attic_humidity
+        name: Zolder
+
+  - type: entities
+    title: Heating Boost
+    show_header_toggle: false
+    entities:
+      - input_select.heating_boost_room
+      - input_number.heating_boost_temp
+      - input_number.heating_boost_hour
+      - sensor.heating_boost_end_time
+      - input_boolean.heating_boost
+
+  - type: entities
+    entities:
+      - entity: climate.living_room
+        type: custom:multiple-entity-row
+        name: Woonkamer
+        show_state: false
+        entities:
+          - attribute: current_temperature
+            name: temperatuur
+            unit: "°C"
+            tap_action:
+              action: more-info
+              entity: sensor.living_room_temperature
+          - attribute: current_humidity
+            name: luchtvochtigheid
+            unit: "%"
+            tap_action:
+              action: more-info
+              entity: sensor.living_room_humidity
+      - entity: sensor.mithermometer01_temperature
+        type: custom:multiple-entity-row
+        name: Kantoor
+        show_state: false
+        entities:
+          - entity: sensor.mithermometer01_temperature
+            name: temperatuur
+            unit: "°C"
+          - entity: sensor.mithermometer01_humidity
+            name: luchtvochtigheid
+            unit: "%"
+      - entity: sensor.mithermometer02_temperature
+        type: custom:multiple-entity-row
+        name: Badkamer
+        show_state: false
+        entities:
+          - entity: sensor.mithermometer02_temperature
+            name: temperatuur
+            unit: "°C"
+          - entity: sensor.mithermometer02_humidity
+            name: luchtvochtigheid
+            unit: "%"
+      - entity: sensor.mithermometer03_temperature
+        type: custom:multiple-entity-row
+        name: Slaapkamer
+        show_state: false
+        entities:
+          - entity: sensor.mithermometer03_temperature
+            name: temperatuur
+            unit: "°C"
+          - entity: sensor.mithermometer03_humidity
+            name: luchtvochtigheid
+            unit: "%"
+      - entity: sensor.mithermometer04_temperature
+        type: custom:multiple-entity-row
+        name: Logeerkamer
+        show_state: false
+        entities:
+          - entity: sensor.mithermometer04_temperature
+            name: temperatuur
+            unit: "°C"
+          - entity: sensor.mithermometer04_humidity
+            name: luchtvochtigheid
+            unit: "%"
+      - entity: sensor.mithermometer05_temperature
+        type: custom:multiple-entity-row
+        name: Zolder
+        show_state: false
+        entities:
+          - entity: sensor.mithermometer05_temperature
+            name: temperatuur
+            unit: "°C"
+          - entity: sensor.mithermometer05_humidity
+            name: luchtvochtigheid
+            unit: "%"

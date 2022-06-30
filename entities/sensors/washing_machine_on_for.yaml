@@ -1,0 +1,11 @@
+---
+- platform: template
+  sensors:
+    washing_machine_on_for:
+      unique_id: fab06ea3-09e7-410c-8298-a04f7fa2e0bf
+      value_template: >
+        {% set on_for = as_timestamp(now()) - as_timestamp(states("input_datetime.washing_machine_on")) %}
+        {% if states("binary_sensor.washing_machine") == "on" %}
+        {% if (on_for / 3600)|round(1) < 1 %}{{ (on_for)|timestamp_custom("%-Mm", False) }}
+        {% else %}{{ (on_for)|timestamp_custom("%-Hu %-Mm", False) }}{% endif %}
+        {% endif %}

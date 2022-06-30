@@ -1,0 +1,44 @@
+---
+light.hallway_ceiling:
+  friendly_name: Gang
+  icon: mdi:track-light
+
+light.upstairs_hallway_ceiling:
+  friendly_name: Overloop
+  icon: mdi:track-light
+
+light.living_room_lights:
+  friendly_name: Woonkamer
+  icon: mdi:sofa
+
+light.living_room_shelf:
+  friendly_name: Teun
+  icon: mdi:lightbulb
+
+light.living_room_tv_cabinet:
+  friendly_name: TV-meubel
+  icon: mdi:lightbulb-multiple
+
+light.living_room_display_cabinet:
+  friendly_name: Bergkast
+  icon: mdi:wardrobe-outline
+
+light.dining_table:
+  friendly_name: Eettafel
+  icon: mdi:vanity-light
+
+light.kitchen_cabinets:
+  friendly_name: Keuken
+  icon: mdi:stove
+
+light.bedroom_bedside_left:
+  friendly_name: Mike's bedlamp
+  icon: mdi:lamp
+
+light.bedroom_bedside_right:
+  friendly_name: Wilma's bedlamp
+  icon: mdi:lamp
+
+light.attic_ceiling:
+  friendly_name: Zolder
+  icon: mdi:wall-sconce-flat

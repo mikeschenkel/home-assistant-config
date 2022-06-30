@@ -1,0 +1,11 @@
+---
+heating_boost_room:
+  name: Room
+  options:
+    - Woonkamer
+    - Kantoor
+    - Badkamer
+    - Slaapkamer
+    - Alle kamers
+  initial: Woonkamer
+  icon: mdi:radiator-disabled

@@ -1,0 +1,4 @@
+---
+mqtt:
+  sensor: !include_dir_merge_list ../entities/mqtt/sensor
+  climate: !include_dir_merge_list ../entities/mqtt/climate

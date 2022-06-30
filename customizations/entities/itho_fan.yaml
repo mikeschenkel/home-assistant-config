@@ -1,0 +1,12 @@
+---
+sensor.itho_fan_state:
+  friendly_name: Speed
+
+sensor.itho_fan_mode:
+  friendly_name: Mode
+
+sensor.itho_fan_temperature:
+  friendly_name: Temperature
+
+sensor.itho_fan_humidity:
+  friendly_name: Humidity

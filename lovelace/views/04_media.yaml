@@ -1,0 +1,14 @@
+---
+title: Media
+icon: mdi:play-circle
+path: media
+cards:
+  - type: media-control
+    entity: media_player.chromecast
+  # - type: custom:mini-media-player
+  #   entity: media_player.chromecast
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: media_player.huiskamer
+      - entity: media_player.zolder

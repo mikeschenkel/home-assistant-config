@@ -1,0 +1,6 @@
+---
+- platform: group
+  unique_id: 268438c3-ad5a-4f96-977f-02e03fdafcf5
+  name: Kitchen lights
+  entities:
+    - light.kitchen_cabinets

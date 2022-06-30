@@ -1,0 +1,87 @@
+---
+- name: "Living Room MHI AC Connected"
+  state_topic: "Living-Room-MHI-AC-Ctrl/connected"
+
+- name: "Living Room MHI AC Power"
+  state_topic: "Living-Room-MHI-AC-Ctrl/Power"
+  icon: mdi:power
+
+- name: "Living Room MHI AC Mode"
+  state_topic: "Living-Room-MHI-AC-Ctrl/Mode"
+  icon: mdi:air-conditioner
+
+- name: "Living Room MHI AC Troom"
+  state_topic: "Living-Room-MHI-AC-Ctrl/Troom"
+  icon: mdi:thermostat
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Living Room MHI AC Tsetpoint"
+  state_topic: "Living-Room-MHI-AC-Ctrl/Tsetpoint"
+  icon: mdi:thermostat
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Living Room MHI AC Errorcode"
+  state_topic: "Living-Room-MHI-AC-Ctrl/Errorcode"
+  icon: mdi:alert-circle
+
+- name: "Living Room MHI AC - OpData - Mode"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/Mode"
+  icon: mdi:air-conditioner
+
+- name: "Living Room MHI AC - OpData - Tsetpoint"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/Tsetpoint"
+  icon: mdi:thermostat
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Living Room MHI AC - OpData - Return Air"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/RETURN-AIR"
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Living Room MHI AC Outdoor temperature"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/OUTDOOR"
+  device_class: temperature
+  unit_of_measurement: "°C"
+
+- name: "Living Room MHI AC Compressor frequency"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/COMP"
+  device_class: frequency
+  unit_of_measurement: "Hz"
+  icon: mdi:current-ac
+
+- name: "Living Room MHI AC Current"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/CT"
+  device_class: current
+  unit_of_measurement: "А"
+  icon: mdi:current-ac
+
+- name: "Living Room MHI AC Indoor fan speed"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/IU-FANSPEED"
+  icon: mdi:fan-speed-1
+
+- name: "Living Room MHI AC Outdoor fan speed"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/OU-FANSPEED"
+  icon: mdi:fan-speed-2
+
+- name: "Living Room MHI AC Running hours indoor unit"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/TOTAL-IU-RUN"
+  device_class: duration
+  unit_of_measurement: "hours"
+  icon: mdi:clock-time-four
+
+- name: "Living Room MHI AC Running hours compressor"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/TOTAL-COMP-RUN"
+  device_class: duration
+  unit_of_measurement: "hours"
+  icon: mdi:clock-time-four
+
+- name: "Living Room MHI AC Protection number compressor"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/PROTECTION-NO"
+  icon: mdi:alert-circle
+
+- name: "Living Room MHI AC defrost control"
+  state_topic: "Living-Room-MHI-AC-Ctrl/OpData/DEFROST"
+  icon: mdi:car-defrost-front

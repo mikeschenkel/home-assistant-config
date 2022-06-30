@@ -1,0 +1,6 @@
+---
+persons:
+  name: People
+  entities:
+    - person.mike
+    - person.wilma

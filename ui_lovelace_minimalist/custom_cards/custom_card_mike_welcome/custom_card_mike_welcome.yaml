@@ -1,0 +1,61 @@
+---
+custom_card_mike_welcome:
+  template:
+    - "ulm_language_variables"
+    - "card_title"
+  variables:
+    ulm_card_welcome_trash_today: sensor.omrin_vandaag
+    ulm_card_welcome_trash_tomorrow: sensor.omrin_morgen
+  type: "custom:button-card"
+  show_icon: false
+  show_label: true
+  show_name: true
+  name: |
+    [[[
+      var today = new Date();
+      var time = today.getHours()
+      let welcome = '';
+      if (time >= '18'){
+        welcome = variables.ulm_evening;
+      } else if (time >= '12'){
+        welcome = variables.ulm_afternoon;
+      } else if (time >= '5'){
+        welcome = variables.ulm_morning;
+      } else {
+        welcome = variables.ulm_hello;
+      }
+      return welcome + ', ' + user.name + '!';
+    ]]]
+  label: |
+    [[[
+      var trash = '';
+      var trash_icon = '♻️';
+      if (states[variables.ulm_card_welcome_trash_today].state !== 'Geen' && states[variables.ulm_card_welcome_trash_today].state !== 'unknown') {
+        switch(states[variables.ulm_card_welcome_trash_today].state) {
+          case 'sortibak':
+            trash = 'Sortibak';
+            break;
+          case 'gft':
+            trash = 'Biobak';
+            break;
+          case 'papier':
+            trash = 'Papierbak';
+            break;
+        }
+        return trash_icon + ' ' + 'Vandaag de ' + trash + ' aan de straat!';
+      }
+      if (states[variables.ulm_card_welcome_trash_tomorrow].state !== 'Geen' && states[variables.ulm_card_welcome_trash_tomorrow].state !== 'unknown') {
+        switch(states[variables.ulm_card_welcome_trash_tomorrow].state) {
+          case 'sortibak':
+            trash = 'Sortibak';
+            break;
+          case 'gft':
+            trash = 'Biobak';
+            break;
+          case 'papier':
+            trash = 'Papierbak';
+            break;
+        }
+        return trash_icon + ' ' + 'Morgen de ' + trash + ' aan de straat!';
+      }
+    ]]]

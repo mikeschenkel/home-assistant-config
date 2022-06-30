@@ -1,0 +1,85 @@
+---
+title: Utility Meter
+path: utility_meter
+icon: mdi:counter
+cards:
+  - type: gauge
+    entity: sensor.power_consumption
+    unit: "kW"
+    severity:
+      green: 0
+      yellow: 3680
+      red: 4600
+
+  - type: entities
+    entities:
+      - entity: sensor.daily_energy_offpeak
+      - entity: sensor.daily_energy_peak
+      - entity: sensor.daily_energy
+      - type: divider
+
+      - entity: sensor.daily_gas
+      - type: divider
+      - entity: sensor.daily_water
+
+  - type: custom:mini-graph-card
+    hours_to_show: 168
+    aggregate_func: max
+    group_by: date
+    show:
+      graph: bar
+    entities:
+      - entity: sensor.daily_energy
+
+  - type: custom:mini-graph-card
+    hours_to_show: 168
+    aggregate_func: max
+    group_by: date
+    show:
+      graph: bar
+    entities:
+      - entity: sensor.daily_gas
+
+  - type: entities
+    entities:
+      - entity: sensor.daily_energy_cost
+      - entity: sensor.monthly_energy_cost
+      - type: divider
+      - entity: sensor.daily_gas_cost
+      - entity: sensor.monthly_gas_cost
+      - type: divider
+      - entity: sensor.daily_utility_cost
+      - entity: sensor.monthly_utility_cost
+
+  - type: entities
+    entities:
+      # - entity: sensor.daily_gas
+      - entity: sensor.monthly_gas
+      - entity: sensor.yearly_gas
+  - type: entities
+    entities:
+      # - type: custom:fold-entity-row
+      #   head:
+      #     entity: sensor.daily_energy
+      #   entities:
+      #     - entity: sensor.daily_energy_offpeak
+      #     - entity: sensor.daily_energy_peak
+      # - type: divider
+      - type: custom:fold-entity-row
+        head:
+          entity: sensor.monthly_energy
+        entities:
+          - entity: sensor.monthly_energy_offpeak
+          - entity: sensor.monthly_energy_peak
+      - type: divider
+      - type: custom:fold-entity-row
+        head:
+          entity: sensor.yearly_energy
+        entities:
+          - entity: sensor.yearly_energy_offpeak
+          - entity: sensor.yearly_energy_peak
+  - type: entities
+    entities:
+      - entity: sensor.daily_water
+      - entity: sensor.monthly_water
+      - entity: sensor.yearly_water

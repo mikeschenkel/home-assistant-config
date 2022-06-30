@@ -1,0 +1,124 @@
+---
+title: "Lights"
+path: "lights"
+icon: mdi:lightbulb-group
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: chip_navigate
+        label: ""
+        variables:
+          ulm_chip_navigate_path: /ui-lovelace-minimalist/home/
+          ulm_chip_navigate_icon: mdi:home
+
+  - type: "custom:button-card"
+    template: card_title
+    name: "Verlichting"
+
+  - type: "custom:button-card"
+    template: card_title
+    label: "Beneden"
+
+  - type: vertical-stack
+    cards:
+      - type: custom:fold-entity-row
+        head:
+          type: "custom:button-card"
+          template: card_light
+          entity: light.living_room_lights
+          variables:
+            ulm_card_light_enable_slider: true
+            ulm_card_light_enable_collapse: true
+            ulm_card_light_enable_horizontal: true
+        show_header_toggle: false
+        entities:
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.living_room_tv_cabinet
+            variables:
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_collapse: true
+              ulm_card_light_enable_horizontal: true
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.living_room_shelf
+            variables:
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_collapse: true
+              ulm_card_light_enable_horizontal: true
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.living_room_display_cabinet
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.dining_table
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.kitchen_cabinets
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+
+  - type: "custom:button-card"
+    template: card_title
+    label: "Gang & Overloop"
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.hallway_ceiling
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.upstairs_hallway_ceiling
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+
+  - type: "custom:button-card"
+    template: card_title
+    label: "Slaapkamer"
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.bedroom_bedside_left
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.bedroom_bedside_right
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+
+  - type: "custom:button-card"
+    template: card_title
+    label: "Zolder"
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.attic_ceiling

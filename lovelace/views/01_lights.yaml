@@ -1,0 +1,52 @@
+---
+title: Lights
+path: lights
+icon: mdi:lightbulb
+cards:
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          entity: light.living_room_lights
+          name: Woonkamer
+          icon: mdi:sofa
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.living_room_tv_cabinet
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.living_room_shelf
+            toggle: true
+          - entity: light.living_room_display_cabinet
+      - type: divider
+      - type: custom:slider-entity-row
+        entity: light.dining_table
+        toggle: true
+      - type: divider
+      - type: custom:slider-entity-row
+        entity: light.kitchen_cabinets
+        toggle: true
+      - type: divider
+      - type: custom:slider-entity-row
+        entity: light.hallway_ceiling
+        toggle: true
+      - type: divider
+      - type: custom:slider-entity-row
+        entity: light.upstairs_hallway_ceiling
+        toggle: true
+      - type: divider
+      - type: custom:fold-entity-row
+        head:
+          entity: light.bedroom_bedside_right
+          name: Slaapkamer
+          icon: mdi:bed-king
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.bedroom_bedside_left
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.bedroom_bedside_right
+            toggle: true
+      - type: divider
+      - entity: light.attic_ceiling

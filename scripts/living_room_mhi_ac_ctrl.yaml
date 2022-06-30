@@ -1,0 +1,21 @@
+---
+living_room_mhi_ac_reboot:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Living-Room-MHI-AC-Ctrl/reset
+        payload: "reset"
+
+living_room_mhi_ac_defrost_on:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Living-Room-MHI-AC-Ctrl/OpData/DEFROST
+        payload: "on"
+
+living_room_mhi_ac_defrost_off:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: Living-Room-MHI-AC-Ctrl/OpData/DEFROST
+        payload: "off"

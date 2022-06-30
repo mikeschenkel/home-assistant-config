@@ -1,0 +1,61 @@
+---
+set_tado_to_away:
+  alias: Set Tado to away mode
+  sequence:
+    - service: climate.set_preset_mode
+      entity_id: group.all_heaters
+      data:
+        preset_mode: away
+
+set_tado_to_home:
+  alias: Set Tado to home mode
+  sequence:
+    - service: climate.set_preset_mode
+      entity_id: group.all_heaters
+      data:
+        preset_mode: home
+
+set_heating_to_auto:
+  alias: Set all heaters to auto mode
+  sequence:
+    - service: climate.set_hvac_mode
+      entity_id: group.all_heaters
+      data:
+        hvac_mode: auto
+
+turn_heating_off:
+  alias: Turn off all heaters
+  sequence:
+    - service: climate.turn_off
+      entity_id: group.all_heaters
+
+heating_boost:
+  alias: Boost heating
+  sequence:
+    - service: tado.set_climate_timer
+      data:
+        entity_id: >
+          {% if is_state('input_select.heating_boost_room', 'Woonkamer') %}
+            climate.living_room
+          {%-elif is_state('input_select.heating_boost_room', 'Kantoor') %}
+            climate.office
+          {%-elif is_state('input_select.heating_boost_room', 'Slaapkamer') %}
+            climate.bedroom
+          {%-elif is_state('input_select.heating_boost_room', 'Badkamer') %}
+            climate.bathroom
+          {%-elif is_state('input_select.heating_boost_room', 'Alle kamers') %}
+            group.all_heaters
+          {% endif %}
+        time_period: "{{ states('sensor.heating_boost_end_time_tado') }}"
+        temperature: "{{ states('input_number.heating_boost_temp') }}"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.heating_boost
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.heating_boost_hour
+        value: 1
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.heating_boost_temp
+        value: 21

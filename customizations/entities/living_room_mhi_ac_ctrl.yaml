@@ -1,0 +1,10 @@
+---
+script.living_room_mhi_ac_reboot:
+  friendly_name: Reboot WeMos D1 mini
+  icon: mdi:chip
+script.living_room_mhi_ac_defrost_on:
+  friendly_name: Living Room MHI AC Defrost ON
+  icon: mdi:car-defrost-front
+script.living_room_mhi_ac_defrost_off:
+  friendly_name: Living Room MHI AC Defrost OFF
+  icon: mdi:car-defrost-front
