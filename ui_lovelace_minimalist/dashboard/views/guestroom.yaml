@@ -16,13 +16,15 @@ cards:
   - type: horizontal-stack
     cards:
       - type: "custom:button-card"
-        template: card_graph
+        template: custom_card_mike_graph
+        entity: sensor.mithermometer04_temperature
         variables:
           ulm_card_graph_color: "var(--google-red)"
           ulm_card_graph_name: Temperatuur
           ulm_card_graph_entity: sensor.mithermometer04_temperature
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer04_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Luchtvochtigheid

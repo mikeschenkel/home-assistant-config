@@ -26,11 +26,13 @@ cards:
     cards:
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.living_room_temperature
         variables:
           ulm_card_graph_name: Woonkamer
           ulm_card_graph_entity: sensor.living_room_temperature
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.mithermometer01_temperature
         variables:
           ulm_card_graph_name: Kantoor
           ulm_card_graph_entity: sensor.mithermometer01_temperature
@@ -39,11 +41,13 @@ cards:
     cards:
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.mithermometer02_temperature
         variables:
           ulm_card_graph_name: Badkamer
           ulm_card_graph_entity: sensor.mithermometer02_temperature
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.mithermometer03_temperature
         variables:
           ulm_card_graph_name: Slaapkamer
           ulm_card_graph_entity: sensor.mithermometer03_temperature
@@ -52,11 +56,13 @@ cards:
     cards:
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.mithermometer04_temperature
         variables:
           ulm_card_graph_name: Logeerkamer
           ulm_card_graph_entity: sensor.mithermometer04_temperature
       - type: "custom:button-card"
         template: custom_card_mike_graph
+        entity: sensor.mithermometer05_temperature
         variables:
           ulm_card_graph_name: Zolder
           ulm_card_graph_entity: sensor.mithermometer05_temperature
@@ -70,12 +76,14 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.living_room_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Woonkamer
           ulm_card_graph_entity: sensor.living_room_humidity
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer01_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Kantoor
@@ -85,12 +93,14 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer02_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Badkamer
           ulm_card_graph_entity: sensor.mithermometer02_humidity
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer03_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Slaapkamer
@@ -100,12 +110,14 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer04_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Logeerkamer
           ulm_card_graph_entity: sensor.mithermometer04_humidity
       - type: "custom:button-card"
         template: card_graph
+        entity: sensor.mithermometer05_humidity
         variables:
           ulm_card_graph_color: "var(--google-blue)"
           ulm_card_graph_name: Zolder
