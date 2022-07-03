@@ -29,11 +29,10 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_binary_sensor_alert
-        variables:
-          - ulm_card_binary_sensor_alert: true
         entity: binary_sensor.hallway_motion
-        show_last_changed: true
-        name: "Beweging"
+        variables:
+          ulm_show_last_changed: true
+          ulm_card_binary_sensor_alert_name: "Beweging"
       - type: "custom:button-card"
         template: card_battery
         entity: sensor.hallway_motion_battery_level
@@ -46,11 +45,10 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_binary_sensor_alert
-        variables:
-          - ulm_card_binary_sensor_alert: true
         entity: binary_sensor.hallway_door
-        show_last_changed: true
-        name: "Voordeur"
+        variables:
+          ulm_show_last_changed: true
+          ulm_card_binary_sensor_alert_name: "Voordeur"
       - type: "custom:button-card"
         template: card_battery
         entity: sensor.hallway_door_battery_level
