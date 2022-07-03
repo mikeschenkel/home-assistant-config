@@ -78,13 +78,13 @@ cards:
         template: card_battery
         entity: sensor.bedroom_bedside_left_switch_battery_level
         variables:
+          ulm_card_battery_name: "Wilma's bedlamp knop"
           ulm_card_battery_battery_level_danger: 25
           ulm_card_battery_battery_level_warning: 50
-        name: "Wilma's bedlamp knop"
       - type: "custom:button-card"
         template: card_battery
         entity: sensor.mithermometer03_battery_level
         variables:
+          ulm_card_battery_name: "Klimaatsensor"
           ulm_card_battery_battery_level_danger: 25
           ulm_card_battery_battery_level_warning: 50
-        name: "Klimaatsensor"

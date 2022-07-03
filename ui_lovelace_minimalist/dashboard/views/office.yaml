@@ -61,6 +61,6 @@ cards:
         template: card_battery
         entity: sensor.mithermometer01_battery_level
         variables:
+          ulm_card_battery_name: "Klimaatsensor"
           ulm_card_battery_battery_level_danger: 25
           ulm_card_battery_battery_level_warning: 50
-        name: "Klimaatsensor"
