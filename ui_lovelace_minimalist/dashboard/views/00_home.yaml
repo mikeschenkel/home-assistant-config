@@ -51,9 +51,12 @@ cards:
             variables:
               ulm_card_person_entity: person.mike
               ulm_card_person_use_entity_picture: true
+              ulm_multiline: false
               ulm_card_person_driving_entity: binary_sensor.mike_is_driving
               ulm_card_person_commute_entity: sensor.eta_home_mike
               ulm_card_person_commute_icon: mdi:car
+              ulm_card_person_battery_entity: sensor.iphone_van_mike_battery_level
+              ulm_card_person_battery_state_entity: sensor.iphone_van_mike_battery_state
           - type: "custom:button-card"
             template: card_person_info
             entity: person.wilma
@@ -61,10 +64,12 @@ cards:
               ulm_card_person_entity: person.wilma
               ulm_card_person_use_entity_picture: true
               ulm_card_person_zone1: zone.werk
-              ulm_card_person_driving_entity: input_boolean.dummy
+              ulm_multiline: false
+              ulm_card_person_driving_entity: binary_sensor.wilma_is_driving
               ulm_card_person_commute_entity: sensor.eta_home_wilma
               ulm_card_person_commute_icon: mdi:car
-
+              ulm_card_person_battery_entity: sensor.iphone_van_w_v_battery_level
+              ulm_card_person_battery_state_entity: sensor.iphone_van_w_v_battery_state
       - type: custom:state-switch
         entity: media_player.chromecast
         states:
