@@ -1,8 +1,6 @@
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/apexcharts-card/apexcharts-card.js
-      type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/light-entity-card/light-entity-card.js
