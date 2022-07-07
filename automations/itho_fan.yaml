@@ -1,0 +1,20 @@
+---
+- id: 0bff1e2e-6f13-406d-879b-0d12d41d1d36
+  alias: "Itho Fan: set mode by input_select"
+  trigger:
+    - platform: state
+      entity_id: input_select.itho_fan_mode
+  action:
+    - service: script.itho_fan_mode_{{ states("input_select.itho_fan_mode") }}
+
+- id: 512ecc21-fba8-4180-a0bf-64cc90579bdc
+  alias: "Itho Fan: update input_select when switching modes"
+  trigger:
+    - platform: state
+      entity_id: sensor.itho_fan_mode
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.itho_fan_mode
+      data:
+        option: "{{ states('sensor.itho_fan_mode') }}"

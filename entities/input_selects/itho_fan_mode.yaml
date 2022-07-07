@@ -1,0 +1,9 @@
+---
+itho_fan_mode:
+  name: Mode
+  options:
+    - low
+    - medium
+    - high
+  initial: medium
+  icon: mdi:form-dropdown

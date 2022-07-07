@@ -71,12 +71,13 @@ cards:
           \ states(\"sensor.washing_machine_power\") }} Watt\n{% else %}\n  Uit\n\
           {% endif %}\n"
 
-  - title: Mechanische ventilatie
+  - title: Mechanische Ventilatie
     type: entities
     entities:
-      - entity: sensor.itho_fan_state
-      - entity: sensor.itho_fan_temperature
-      - entity: sensor.itho_fan_humidity
+      - input_select.itho_fan_mode
+      - sensor.itho_fan_state
+      - sensor.itho_fan_temperature
+      - sensor.itho_fan_humidity
 
   - type: entities
     entities:
