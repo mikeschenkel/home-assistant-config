@@ -1,6 +1,5 @@
 ---
-ventilation_preset_low:
-  alias: Ventilation Preset Low
+itho_fan_mode_low:
   icon: mdi:fan-speed-1
   sequence:
     - service: mqtt.publish
@@ -8,8 +7,7 @@ ventilation_preset_low:
         topic: "itho/cmd"
         payload: "low"
 
-ventilation_preset_medium:
-  alias: Ventilation Preset Medium
+itho_fan_mode_medium:
   icon: mdi:fan-speed-2
   sequence:
     - service: mqtt.publish
@@ -17,8 +15,7 @@ ventilation_preset_medium:
         topic: "itho/cmd"
         payload: "medium"
 
-ventilation_preset_high:
-  alias: Ventilation Preset High
+itho_fan_mode_high:
   icon: mdi:fan-speed-3
   sequence:
     - service: mqtt.publish

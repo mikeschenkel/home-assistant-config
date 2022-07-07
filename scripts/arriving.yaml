@@ -2,4 +2,4 @@
 arriving:
   alias: Arriving home
   sequence:
-    - service: script.ventilation_preset_medium
+    - service: script.itho_fan_mode_medium

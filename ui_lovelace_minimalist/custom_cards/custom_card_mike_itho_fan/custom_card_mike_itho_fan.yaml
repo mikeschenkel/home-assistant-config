@@ -1,5 +1,5 @@
 ---
-custom_card_mike_ventilation:
+custom_card_mike_itho_fan:
   size: "20px"
   triggers_update: "all"
   show_icon: false
@@ -43,7 +43,7 @@ custom_card_mike_ventilation:
                 action: call-service
                 service: script.turn_on
                 service_data:
-                  entity_id: script.ventilation_preset_low
+                  entity_id: script.itho_fan_mode_low
               icon: "mdi:fan-speed-1"
               entity: sensor.itho_fan_mode
               state:
@@ -61,7 +61,7 @@ custom_card_mike_ventilation:
                 action: call-service
                 service: script.turn_on
                 service_data:
-                  entity_id: script.ventilation_preset_medium
+                  entity_id: script.itho_fan_mode_medium
               icon: "mdi:fan-speed-2"
               entity: sensor.itho_fan_mode
               state:
@@ -79,7 +79,7 @@ custom_card_mike_ventilation:
                 action: call-service
                 service: script.turn_on
                 service_data:
-                  entity_id: script.ventilation_preset_high
+                  entity_id: script.itho_fan_mode_high
               icon: "mdi:fan-speed-3"
               entity: sensor.itho_fan_mode
               state:

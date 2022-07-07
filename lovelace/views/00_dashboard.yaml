@@ -107,34 +107,34 @@ cards:
         show_name: false
         show_state: false
         icon_height: 75px
-        entity: script.ventilation_preset_low
+        entity: script.itho_fan_mode_low
         tap_action:
           action: call-service
           service: script.turn_on
           service_data:
-            entity_id: script.ventilation_preset_low
+            entity_id: script.itho_fan_mode_low
 
       - type: button
         show_name: false
         show_state: false
         icon_height: 75px
-        entity: script.ventilation_preset_medium
+        entity: script.itho_fan_mode_medium
         tap_action:
           action: call-service
           service: script.turn_on
           service_data:
-            entity_id: script.ventilation_preset_medium
+            entity_id: script.itho_fan_mode_medium
 
       - type: button
         show_name: false
         show_state: false
         icon_height: 75px
-        entity: script.ventilation_preset_high
+        entity: script.itho_fan_mode_high
         tap_action:
           action: call-service
           service: script.turn_on
           service_data:
-            entity_id: script.ventilation_preset_high
+            entity_id: script.itho_fan_mode_high
 
   - type: vertical-stack
     cards:

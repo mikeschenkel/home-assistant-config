@@ -6,7 +6,7 @@ going_to_sleep:
     - service: input_boolean.turn_on
       entity_id: input_boolean.sleep_mode
     - service: script.turn_off_everything_non_automatic
-    - service: script.ventilation_preset_low
+    - service: script.itho_fan_mode_low
 
 wake_up:
   alias: Wake up
@@ -14,4 +14,4 @@ wake_up:
   sequence:
     - service: input_boolean.turn_off
       entity_id: input_boolean.sleep_mode
-    - service: script.ventilation_preset_medium
+    - service: script.itho_fan_mode_medium

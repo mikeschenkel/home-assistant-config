@@ -81,7 +81,7 @@ cards:
         template: custom_card_mike_afval
 
       - type: "custom:button-card"
-        template: custom_card_mike_ventilation
+        template: custom_card_mike_itho_fan
 
       - type: horizontal-stack
         cards:
@@ -96,29 +96,29 @@ cards:
                 show_name: false
                 show_state: false
                 size: "48px"
-                entity: script.ventilation_preset_low
+                entity: script.itho_fan_mode_low
                 tap_action:
                   action: call-service
                   service: script.turn_on
                   service_data:
-                    entity_id: script.ventilation_preset_low
+                    entity_id: script.itho_fan_mode_low
               - type: "custom:button-card"
                 show_name: false
                 show_state: false
                 size: "48px"
-                entity: script.ventilation_preset_medium
+                entity: script.itho_fan_mode_medium
                 tap_action:
                   action: call-service
                   service: script.turn_on
                   service_data:
-                    entity_id: script.ventilation_preset_medium
+                    entity_id: script.itho_fan_mode_medium
               - type: "custom:button-card"
                 show_name: false
                 show_state: false
                 size: "48px"
-                entity: script.ventilation_preset_high
+                entity: script.itho_fan_mode_high
                 tap_action:
                   action: call-service
                   service: script.turn_on
                   service_data:
-                    entity_id: script.ventilation_preset_high
+                    entity_id: script.itho_fan_mode_high
