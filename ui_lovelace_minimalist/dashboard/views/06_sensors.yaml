@@ -35,55 +35,35 @@ cards:
   - type: "custom:button-card"
     template: "card_title"
     name: "Motion Sensors"
-    label: "Activated in last 10 minutes"
-  - type: "custom:auto-entities"
-    card:
-      type: "grid"
-      columns: 2
-      square: false
-    card_param: "cards"
-    sort:
-      method: last_changed
-      reverse: true
-    filter:
-      include:
-        - name: /[Mm]otion/
-          domain: group
-          options:
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_binary_sensor_alert
+        entity: binary_sensor.hallway_motion
+        variables:
+          ulm_show_last_changed: true
+          ulm_card_binary_sensor_alert_name: "Gang"
+      - type: "custom:state-switch"
+        entity: user
+        states:
+          Mike:
             type: "custom:button-card"
-            template: "card_binary_sensor_alert"
+            template: card_binary_sensor_alert
+            entity: binary_sensor.motion_sensor
             variables:
-              - ulm_card_binary_sensor_alert: true
-          last_changed: "<10"
-        - domain: binary_sensor
-          attributes:
-            device_class: motion
-          last_changed: "<10"
-          options:
-            type: "custom:button-card"
-            template: "card_binary_sensor_alert"
-            variables:
-              - ulm_card_binary_sensor_alert: true
+              ulm_show_last_changed: true
+              ulm_card_binary_sensor_alert_name: "Beweging"
+
   - type: "custom:button-card"
     template: "card_title"
     name: "Contact Sensors"
-    label: "Open"
-  - type: "custom:auto-entities"
-    card:
-      type: "grid"
-      columns: 2
-      square: false
-    card_param: "cards"
-    sort:
-      reverse: true
-    filter:
-      include:
-        - domain: binary_sensor
-          attributes:
-            device_class: opening
-          state: "on"
-          options:
-            type: "custom:button-card"
-            template: "card_binary_sensor_alert"
-            variables:
-              - ulm_card_binary_sensor_alert: true
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_binary_sensor_alert
+        entity: binary_sensor.hallway_door
+        variables:
+          ulm_show_last_changed: true
+          ulm_card_binary_sensor_alert_name: "Voordeur"
