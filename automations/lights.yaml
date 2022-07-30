@@ -84,13 +84,9 @@
 - id: 56419e4e-ffd0-4dc0-a3bd-3f67d569b05b
   alias: "Lights: automatically dim upstairs hallway when already on"
   trigger:
-    platform: time_pattern
-    minutes: "/10"
+    - platform: state
+      entity_id: sensor.hallway_lights_brightness
   condition:
-    - condition: numeric_state
-      entity_id: sun.sun
-      value_template: "{{ state.attributes.elevation }}"
-      below: 5
     - condition: state
       entity_id: light.upstairs_hallway_ceiling
       state: "on"
@@ -99,6 +95,7 @@
     entity_id: light.upstairs_hallway_ceiling
     data:
       brightness_pct: "{{ states('sensor.hallway_lights_brightness') }}"
+      transition: 10
 
 # ------------------------------------------------------------------------------
 # Kitchen
