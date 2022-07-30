@@ -1,0 +1,32 @@
+---
+- id: 19f287be-ce56-4a91-b209-f52f250f15e5
+  alias: "Shower mode: turn on shower mode"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.someone_showering
+      from: "off"
+      to: "on"
+  action:
+    - service: script.itho_fan_mode_high
+
+- id: 4bf38635-dad3-4af9-a731-745647e6aa02
+  alias: "Shower mode: turn off shower mode"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.someone_showering
+      from: "on"
+      to: "off"
+  action:
+    - service: script.itho_fan_mode_medium
+
+- id: e349c946-ba41-41e0-b8d7-ba9e033c37ce
+  alias: "Shower mode: automatically turn off shower mode"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.someone_showering
+      to: "on"
+      for: "00:30:00"
+  action:
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.someone_showering

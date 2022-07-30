@@ -39,15 +39,9 @@
           - service: input_boolean.turn_on
             target:
               entity_id: input_boolean.someone_showering
-          - service: script.itho_fan_mode_high
-          - delay: "00:30:00"
-          - service: script.itho_fan_mode_medium
-          - service: input_boolean.turn_off
-            target:
-              entity_id: input_boolean.someone_showering
+      # Turn off ventilation
       - conditions: "{{ trigger.event.data.event == 1001 }}" # Long click
         sequence:
-          - service: script.itho_fan_mode_medium
           - service: input_boolean.turn_off
             target:
               entity_id: input_boolean.someone_showering
