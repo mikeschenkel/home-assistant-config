@@ -68,5 +68,5 @@
     - service: mqtt.publish
       data:
         topic: "Office-MHI-AC-Ctrl/set/Troom"
-        payload: "{{ states('sensor.mithermometer01_temperature') }}"
-        # payload: "{{ states('sensor.office_temperature') }}"
+        # payload: "{{ states('sensor.mithermometer01_temperature') }}"
+        payload: "{{ states('sensor.office_temperature') }}"
