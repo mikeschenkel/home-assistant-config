@@ -28,6 +28,7 @@ cards:
           template: card_light
           entity: light.living_room_lights
           variables:
+            ulm_icon_tap_action: more-info
             ulm_card_light_enable_slider: true
             ulm_card_light_enable_collapse: true
             ulm_card_light_enable_horizontal: true
@@ -37,6 +38,7 @@ cards:
             template: card_light
             entity: light.living_room_tv_cabinet
             variables:
+              ulm_icon_tap_action: more-info
               ulm_card_light_enable_slider: true
               ulm_card_light_enable_collapse: true
               ulm_card_light_enable_horizontal: true
@@ -44,12 +46,15 @@ cards:
             template: card_light
             entity: light.living_room_shelf
             variables:
+              ulm_icon_tap_action: more-info
               ulm_card_light_enable_slider: true
               ulm_card_light_enable_collapse: true
               ulm_card_light_enable_horizontal: true
           - type: "custom:button-card"
             template: card_light
             entity: light.living_room_display_cabinet
+            variables:
+              ulm_icon_tap_action: more-info
 
   - type: vertical-stack
     cards:
@@ -57,6 +62,7 @@ cards:
         template: card_light
         entity: light.dining_table
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -67,6 +73,7 @@ cards:
         template: card_light
         entity: light.kitchen_cabinets
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -81,6 +88,7 @@ cards:
         template: card_light
         entity: light.hallway_ceiling
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -88,6 +96,7 @@ cards:
         template: card_light
         entity: light.upstairs_hallway_ceiling
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -102,6 +111,7 @@ cards:
         template: card_light
         entity: light.bedroom_bedside_left
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -109,6 +119,7 @@ cards:
         template: card_light
         entity: light.bedroom_bedside_right
         variables:
+          ulm_icon_tap_action: more-info
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_collapse: true
           ulm_card_light_enable_horizontal: true
@@ -122,3 +133,5 @@ cards:
       - type: "custom:button-card"
         template: card_light
         entity: light.attic_ceiling
+        variables:
+          ulm_icon_tap_action: more-info

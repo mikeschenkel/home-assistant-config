@@ -42,6 +42,8 @@ cards:
         template: card_binary_sensor_alert
         entity: binary_sensor.hallway_motion
         variables:
+          ulm_icon_tap_action: more-info
+          ulm_name_tap_action: more-info
           ulm_show_last_changed: true
           ulm_card_binary_sensor_alert_name: "Gang"
       - type: "custom:state-switch"
@@ -52,6 +54,8 @@ cards:
             template: card_binary_sensor_alert
             entity: binary_sensor.motion_sensor
             variables:
+              ulm_icon_tap_action: more-info
+              ulm_name_tap_action: more-info
               ulm_show_last_changed: true
               ulm_card_binary_sensor_alert_name: "Beweging"
 
@@ -65,5 +69,7 @@ cards:
         template: card_binary_sensor_alert
         entity: binary_sensor.hallway_door
         variables:
+          ulm_icon_tap_action: more-info
+          ulm_name_tap_action: more-info
           ulm_show_last_changed: true
           ulm_card_binary_sensor_alert_name: "Voordeur"
