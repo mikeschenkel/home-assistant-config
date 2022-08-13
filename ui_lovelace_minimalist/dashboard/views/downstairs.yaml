@@ -93,20 +93,3 @@ cards:
   - type: "custom:button-card"
     template: card_title
     label: "Apparaten"
-
-  - type: vertical-stack
-    cards:
-      - type: "custom:button-card"
-        template: card_power_outlet
-        variables:
-          ulm_card_power_outlet_consumption_sensor: sensor.living_room_ac_power
-        entity: climate.living_room_ac
-        name: Airco
-        icon: mdi:air-conditioner
-        tap_action:
-          action: navigate
-          navigation_path: "living-room-ac"
-
-  # - type: "custom:button-card"
-  #   template: card_title
-  #   label: "Sensoren"
