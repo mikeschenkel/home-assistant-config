@@ -16,6 +16,6 @@
       value_template: >
         {{
           is_state("person.wilma", "not_home") and
-          is_state("sensor.iphone_van_w_v_activity", "Automotive") or
+          is_state("sensor.iphone_van_wilma_activity", "Automotive") or
           is_state("sensor.wilma_dir_travel", "towards")
         }}
