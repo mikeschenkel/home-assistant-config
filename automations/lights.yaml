@@ -157,6 +157,23 @@
       - light.living_room_lights
       - light.upstairs_hallway_ceiling
 
+- id: 179a876f-ac4d-4e79-8d11-c3a58e866342
+  alias: "Lights: automatically turn off lights when no one is home"
+  trigger:
+    - platform: time
+      at: "23:30:00"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.no_one_home
+      state: "on"
+  action:
+    - delay: "{{ (range(0, 60+1) | random) * 60 }}"
+    - service: light.turn_off
+      entity_id:
+        - light.kitchen_lights
+        - light.living_room_lights
+        - light.upstairs_hallway_ceiling
+
 # ------------------------------------------------------------------------------
 # Extra checks
 # ------------------------------------------------------------------------------
