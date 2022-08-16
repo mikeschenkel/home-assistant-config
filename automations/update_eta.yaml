@@ -1,19 +1,19 @@
----
 - id: 0876acd9-ef4f-4474-bd8c-875b399fcf79
-  alias: "ETA: update Waze ETA when someone is driving"
+  alias: "ETA: update Waze ETA when someones location has changed"
+  mode: queued
   trigger:
-    platform: time_pattern
-    minutes: "/1"
-  condition:
-    condition: state
-    entity_id:
-      - binary_sensor.mike_is_driving
-      - binary_sensor.wilma_is_driving
-    match: any
-    state: "on"
+    - platform: state
+      entity_id:
+        - sensor.iphone_van_mike_geocoded_location
+        - sensor.iphone_van_wilma_geocoded_location
+      to: ~
+
+  variables:
+    name: "{{ trigger.entity_id.split('.')[1].split('_')[2] }}"
+
+  condition: []
+
   action:
     service: homeassistant.update_entity
     target:
-      entity_id:
-        - sensor.eta_home_mike
-        - sensor.eta_home_wilma
+      entity_id: sensor.eta_home_{{ name }}
