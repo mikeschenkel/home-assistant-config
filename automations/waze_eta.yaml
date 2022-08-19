@@ -11,12 +11,10 @@
       entity_id:
         - sensor.iphone_van_mike_geocoded_location
         - sensor.iphone_van_wilma_geocoded_location
-      from: ~
+      from:
 
   variables:
     name: "{{ trigger.entity_id.split('.')[1].split('_')[2] }}"
-
-  condition: []
 
   action:
     service: homeassistant.update_entity
