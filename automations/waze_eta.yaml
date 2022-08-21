@@ -2,7 +2,7 @@
   description: >-
     Update Waze ETA when someones location has changed.
 
-  id: 0876acd9-ef4f-4474-bd8c-875b399fcf79
+  id: f3a035ac-2f95-48d9-a562-106b251789a5
   mode: parallel
   max_exceeded: silent
 
