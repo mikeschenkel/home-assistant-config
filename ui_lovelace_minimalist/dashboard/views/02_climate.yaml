@@ -69,6 +69,20 @@ cards:
 
   - type: "custom:button-card"
     template: card_title
+    name: "Thermal Comfort"
+
+  - type: horizontal-stack
+    cards:
+      - type: "entities"
+        entities:
+          - sensor.thermal_comfort_living_room_perception
+          - sensor.thermal_comfort_office_perception
+          - sensor.thermal_comfort_bathroom_perception
+          - sensor.thermal_comfort_bedroom_perception
+          - sensor.thermal_comfort_attic_perception
+
+  - type: "custom:button-card"
+    template: card_title
     name: "Luchtvochtigheid"
     # label: "Luchtvochtigheid"
 
