@@ -1,11 +1,18 @@
 ---
-- id: e349c946-ba41-41e0-b8d7-ba9e033c37ce
-  alias: "Shower mode: automatically turn off shower mode"
+- alias: "Shower Mode"
+  description: >-
+    Automatically turn off shower mode.
+
+  id: fa15d795-5d1f-4ec8-acac-386ab73c1d27
+  mode: single
+
   trigger:
     - platform: state
       entity_id: input_boolean.someone_showering
       to: "on"
-      for: "00:30:00"
+      for:
+        minutes: 30
+
   action:
     - service: input_boolean.turn_off
       target:
