@@ -1,17 +1,22 @@
 ---
-- id: efd7e983-8744-4c37-bc2b-3d160938acc3
-  alias: "Doorbell: send notification when doorbell is pushed"
+- alias: "Doorbell"
+  description: >-
+    Sends a notification when the doorbell is pushed.
+
+  id: 83eb4e5f-95cd-4ee6-964b-f669005859c9
   mode: single
+
   trigger:
     - platform: state
       entity_id: binary_sensor.esphome_esp01_button
       to: "on"
+
   action:
     - service: "{{ states('sensor.nearest_phone_notify') }}"
       data:
-        title: Doorbell
-        message: Ding dong! Someone is at the door!
+        title: "Doorbell"
+        message: "Ding dong! Someone is at the door!"
         data:
           attachment:
+            url: "/local/images/doorbell.jpg"
             content-type: jpeg
-            url: /local/images/doorbell.jpg
