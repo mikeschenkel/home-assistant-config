@@ -3,7 +3,6 @@
   initial: 22
   min_temp: 18
   max_temp: 30
-  send_if_off: false
   temp_step: 0.5
   modes:
     - "auto"
