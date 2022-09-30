@@ -30,22 +30,6 @@ cards:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            template: card_person
-            entity: person.mike
-            variables:
-              ulm_card_person_entity: person.mike
-              ulm_card_person_use_entity_picture: true
-          - type: "custom:button-card"
-            template: card_person
-            entity: person.wilma
-            variables:
-              ulm_card_person_entity: person.wilma
-              ulm_card_person_use_entity_picture: true
-              ulm_card_person_zone1: zone.werk
-
-      - type: horizontal-stack
-        cards:
-          - type: "custom:button-card"
             template: card_person_info
             entity: person.mike
             variables:
