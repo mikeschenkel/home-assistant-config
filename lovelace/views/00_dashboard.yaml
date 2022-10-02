@@ -30,7 +30,7 @@ cards:
       - type: custom:multiple-entity-row
         entity: binary_sensor.esphome_esp01_button
         secondary_info:
-          entity: automation.notifications_doorbell
+          entity: automation.doorbell
           name: false
           attribute: last_triggered
           format: relative
