@@ -7,45 +7,46 @@ custom_card_mike_buienradar:
   tap_action:
     action: fire-dom-event
     browser_mod:
-      title: Weer-popup
-      hide_header: true
-      command: popup
-      style:
-        width: 100%
-        $: |
-          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-            box-shadow:none;
-          }
-        .: |
-          :host {
-            --mdc-theme-surface: rgba(0,0,0,0);
-            --secondary-background-color: rgba(0,0,0,0);
-            --mdc-dialog-scrim-color: rgba(0,0,0,0.3);
-          }
-          mwc-icon-button {
-            color: #FFF;
-          }
-      card:
-        type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.buienradar
-            show_state: false
-            show_name: false
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-          - type: custom:button-card
-            color: rgba(1,1,1,0)
-            icon: mdi:close-circle-outline
-            show_name: false
-            name: Sluiten
-            color_type: card
-            styles:
-              card:
-                - height: 70px
-                - box-shadow: 0px 0px 0px 0px
-            tap_action:
-              action: call-service
-              service: browser_mod.close_popup
+      service: browser_mod.popup
+      data:
+        title: Weer-popup
+        # hide_header: true
+        style:
+          width: 100%
+          $: |
+            .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+              box-shadow:none;
+            }
+          .: |
+            :host {
+              --mdc-theme-surface: rgba(0,0,0,0);
+              --secondary-background-color: rgba(0,0,0,0);
+              --mdc-dialog-scrim-color: rgba(0,0,0,0.3);
+            }
+            mwc-icon-button {
+              color: #FFF;
+            }
+        content:
+          type: vertical-stack
+          cards:
+            - type: picture-entity
+              entity: camera.buienradar
+              show_state: false
+              show_name: false
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+            - type: custom:button-card
+              color: rgba(1,1,1,0)
+              icon: mdi:close-circle-outline
+              show_name: false
+              name: Sluiten
+              color_type: card
+              styles:
+                card:
+                  - height: 70px
+                  - box-shadow: 0px 0px 0px 0px
+              tap_action:
+                action: call-service
+                service: browser_mod.close_popup
