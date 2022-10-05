@@ -41,9 +41,10 @@ custom_card_mike_itho_fan:
               template: "widget_icon"
               tap_action:
                 action: call-service
-                service: script.turn_on
+                service: input_select.select_option
                 service_data:
-                  entity_id: script.itho_fan_mode_low
+                  entity_id: input_select.itho_fan_mode
+                  option: "low"
               icon: "mdi:fan-speed-1"
               entity: sensor.itho_fan_mode
               state:
@@ -59,9 +60,10 @@ custom_card_mike_itho_fan:
               template: "widget_icon"
               tap_action:
                 action: call-service
-                service: script.turn_on
+                service: input_select.select_option
                 service_data:
-                  entity_id: script.itho_fan_mode_medium
+                  entity_id: input_select.itho_fan_mode
+                  option: "medium"
               icon: "mdi:fan-speed-2"
               entity: sensor.itho_fan_mode
               state:
@@ -77,9 +79,10 @@ custom_card_mike_itho_fan:
               template: "widget_icon"
               tap_action:
                 action: call-service
-                service: script.turn_on
+                service: input_select.select_option
                 service_data:
-                  entity_id: script.itho_fan_mode_high
+                  entity_id: input_select.itho_fan_mode
+                  option: "high"
               icon: "mdi:fan-speed-3"
               entity: sensor.itho_fan_mode
               state:
