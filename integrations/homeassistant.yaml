@@ -1,8 +1,3 @@
 ---
 homeassistant:
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
-  elevation: 0
-  unit_system: metric
-  time_zone: Europe/Amsterdam
-  name: Home
+  customize: !include_dir_merge_named ../customizations/entities
