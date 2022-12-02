@@ -3,7 +3,7 @@
   initial: 22
   min_temp: 18
   max_temp: 30
-  temp_step: 0.5
+  temp_step: 1
   modes:
     - "auto"
     - "dry"
@@ -22,6 +22,7 @@
     - "2"
     - "3"
     - "4"
+    - "auto"
   power_command_topic: "Office-MHI-AC-Ctrl/set/Power"
   mode_command_topic: "Office-MHI-AC-Ctrl/set/Mode"
   mode_state_topic: "Office-MHI-AC-Ctrl/Mode"
