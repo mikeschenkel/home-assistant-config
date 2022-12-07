@@ -4,6 +4,7 @@
   name: "Attic temperature mean"
   entity_id: sensor.attic_temperature
   state_characteristic: mean
+  sampling_size: 20
   precision: 1
 
 - platform: statistics
@@ -11,6 +12,7 @@
   name: "Attic temperature min"
   entity_id: sensor.attic_temperature
   state_characteristic: value_min
+  sampling_size: 20
   precision: 1
 
 - platform: statistics
@@ -18,6 +20,7 @@
   name: "Attic temperature max"
   entity_id: sensor.attic_temperature
   state_characteristic: value_max
+  sampling_size: 20
   precision: 1
 
 - platform: statistics
@@ -25,6 +28,7 @@
   name: "Bedroom temperature mean"
   entity_id: sensor.mithermometer03_temperature
   state_characteristic: mean
+  sampling_size: 20
   precision: 1
 
 - platform: statistics
@@ -32,6 +36,7 @@
   name: "Bedroom temperature min"
   entity_id: sensor.mithermometer03_temperature
   state_characteristic: value_min
+  sampling_size: 20
   precision: 1
 
 - platform: statistics
@@ -39,4 +44,5 @@
   name: "Bedroom temperature max"
   entity_id: sensor.mithermometer03_temperature
   state_characteristic: value_max
+  sampling_size: 20
   precision: 1
