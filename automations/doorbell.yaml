@@ -8,7 +8,7 @@
 
   trigger:
     - platform: state
-      entity_id: binary_sensor.esphome_esp01_button
+      entity_id: binary_sensor.doorbell_button
       to: "on"
 
   action:
