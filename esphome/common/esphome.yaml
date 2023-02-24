@@ -1,0 +1,5 @@
+---
+esphome:
+  name: "${slug}"
+  comment: "${description}"
+  build_path: ".esphome/build/${slug}"

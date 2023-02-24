@@ -1,0 +1,11 @@
+---
+time:
+  - platform: homeassistant
+    id: time_homeassistant
+    timezone: "Europe/Amsterdam"
+    on_time_sync:
+      - component.update: sensor_uptime_timestamp
+
+  - platform: sntp
+    id: time_sntp
+    timezone: "Europe/Amsterdam"

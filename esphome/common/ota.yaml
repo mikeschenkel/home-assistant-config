@@ -1,0 +1,9 @@
+---
+substitutions:
+  ota_password: !secret esphome_ota_password
+
+ota:
+  password: "${ota_password}"
+  safe_mode: true
+  reboot_timeout: 10min
+  num_attempts: 5

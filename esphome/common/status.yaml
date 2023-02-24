@@ -1,0 +1,5 @@
+---
+binary_sensor:
+  - platform: status
+    name: "${name} Status"
+    entity_category: diagnostic

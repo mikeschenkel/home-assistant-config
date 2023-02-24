@@ -1,0 +1,18 @@
+---
+sensor:
+  # Uptime sensor (internal only).
+  - platform: uptime
+    id: sensor_uptime
+  # Uptime timestamp
+  - platform: template
+    id: sensor_uptime_timestamp
+    name: "${name} Uptime"
+    device_class: "timestamp"
+    accuracy_decimals: 0
+    update_interval: never
+    lambda: |-
+      static float timestamp = (
+        id(time_homeassistant).utcnow().timestamp - id(sensor_uptime).state
+      );
+      return timestamp;
+    entity_category: diagnostic
