@@ -1,0 +1,28 @@
+---
+packages:
+  <<: !include_dir_named ../common
+  board: !include ../boards/esp01s.yaml
+
+esphome:
+  board_flash_mode: dout
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${name} Button"
+    on_press:
+      - switch.toggle: relay
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: false
+
+switch:
+  - platform: gpio
+    name: "${name} Relay"
+    pin: GPIO12
+    id: "relay"
