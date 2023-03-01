@@ -1,0 +1,60 @@
+substitutions:
+  name: Doorbell
+  slug: doorbell
+  description: Doorbell
+
+packages:
+  <<: !include_dir_named common
+  board: !include boards/wemos_d1_mini.yaml
+
+globals:
+  - id: chime
+    type: bool
+    restore_value: true
+    initial_value: 'true'
+
+switch:
+  # Switch to toggle the relay
+  - platform: gpio
+    id: relay
+    inverted: true
+    name: "${name} Switch"
+    pin:
+      number: D1
+  - platform: template
+    name: "${name} Chime"
+    id: chime_switch
+    restore_state: false
+    turn_on_action:
+      - globals.set:
+          id: chime
+          value: 'true'
+    turn_off_action:
+      - globals.set:
+          id: chime
+          value: 'false'
+    lambda: |-
+      return id(chime);
+
+binary_sensor:
+  - platform: gpio
+    id: chime_button
+    name: "${name} Button"
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: true
+    filters:
+      # Small filter, to debounce the button press.
+      - delayed_on: 25ms
+      - delayed_off: 3000ms
+    on_press:
+      # Only turn on the chime when it is active.
+      then:
+        if:
+          condition:
+            - switch.is_on: chime_switch
+          then:
+            - switch.turn_on: relay
+            - delay: 250ms
+            - switch.turn_off: relay
