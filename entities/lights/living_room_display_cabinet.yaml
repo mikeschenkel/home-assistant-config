@@ -1,4 +1,0 @@
----
-- platform: switch
-  name: Living Room Display Cabinet
-  entity_id: switch.living_room_display_cabinet

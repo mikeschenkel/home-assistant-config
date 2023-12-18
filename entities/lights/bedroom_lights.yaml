@@ -1,7 +1,0 @@
----
-- platform: group
-  unique_id: 7a4e69f7-3574-4500-8c36-b85fd8aaea7a
-  name: Bedroom lights
-  entities:
-    - light.bedroom_bedside_left
-    - light.bedroom_bedside_right
