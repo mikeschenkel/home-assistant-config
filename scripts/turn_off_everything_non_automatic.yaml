@@ -10,5 +10,5 @@ turn_off_everything_non_automatic:
           - light.attic_ceiling
           - light.bedroom_lights
           - light.kitchen_lights
-          - light.dining_table
+          - light.dining_table_lights
           - light.living_room_lights

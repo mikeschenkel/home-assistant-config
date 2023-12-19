@@ -10,6 +10,6 @@
         {% set attic_lights_on = is_state("light.attic_ceiling", "on") %}
         {% set bedroom_lights_on = is_state("light.bedroom_lights", "on") %}
         {% set kitchen_lights_on = is_state("light.kitchen_lights", "on") %}
-        {% set dining_table_lights_on = is_state("light.dining_table", "on") %}
+        {% set dining_table_lights_on = is_state("light.dining_table_lights", "on") %}
         {% set living_room_lights_on = is_state("light.living_room_lights", "on") %}
         {{ hallway_lights_on or upstairs_hallway_lights_on or attic_lights_on or bedroom_lights_on or kitchen_lights_on or dining_table_lights_on or living_room_lights_on or kitchen_lights_on }}
