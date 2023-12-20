@@ -1,8 +1,0 @@
----
-switch.2_smart_switch_channel_1:
-  friendly_name: Mike's warmtedeken
-  icon: mdi:bed
-
-switch.2_smart_switch_channel_2:
-  friendly_name: Wilma's warmtedeken
-  icon: mdi:bed
