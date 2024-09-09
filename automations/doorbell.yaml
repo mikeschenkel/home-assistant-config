@@ -12,7 +12,7 @@
       to: "on"
 
   action:
-    - service: "{{ states('sensor.nearest_phone_notify') }}"
+    - service: notify.all_phones
       data:
         title: "Doorbell"
         message: "Ding dong! Someone is at the door!"
