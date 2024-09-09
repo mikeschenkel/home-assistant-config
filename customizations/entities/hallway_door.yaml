@@ -1,4 +1,0 @@
----
-binary_sensor.hallway_door:
-  friendly_name: Voordeur
-  device_class: door
