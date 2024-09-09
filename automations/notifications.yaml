@@ -5,21 +5,9 @@
   trigger:
     platform: zone
     entity_id: person.wilma
-    zone: zone.werk
+    zone: zone.dalton_dokkum
     event: leave
   action:
     service: notify.mike_phone
     data:
       message: "Wilma left work"
-
-- id: 17493302-ec90-4ba0-9bd5-9e3698e96852
-  alias: "Notifications: notify if motion detected"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor
-      from: "off"
-      to: "on"
-  action:
-    - service: notify.mike_phone
-      data:
-        message: Motion detected!
