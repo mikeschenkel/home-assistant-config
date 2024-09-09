@@ -20,11 +20,11 @@
   alias: "Lights: automatically turn on hallway"
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_motion
+      entity_id: binary_sensor.hallway_motion_occupancy
       from: "off"
       to: "on"
     - platform: state
-      entity_id: binary_sensor.hallway_door
+      entity_id: binary_sensor.front_door_sensor_contact
       from: "off"
       to: "on"
   condition:
@@ -44,7 +44,7 @@
   alias: "Lights: automatically turn off hallway"
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_motion
+      entity_id: binary_sensor.hallway_motion_occupancy
       from: "on"
       to: "off"
   condition:
@@ -52,7 +52,7 @@
       entity_id: light.hallway_ceiling
       state: "on"
     - condition: state
-      entity_id: binary_sensor.hallway_door
+      entity_id: binary_sensor.front_door_sensor_contact
       state: "off"
     - condition: numeric_state
       entity_id: sun.sun
