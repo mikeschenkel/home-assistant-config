@@ -118,24 +118,6 @@
       - light.kitchen_lights
 
 # ------------------------------------------------------------------------------
-# Dining Table
-# ------------------------------------------------------------------------------
-
-- id: 61f0d3cf-01ff-40ff-a271-1b4000029498
-  alias: "Lights: turn on dining table"
-  trigger:
-    - platform: state
-      entity_id: light.dining_table
-      from: "off"
-      to: "on"
-  action:
-    service: light.turn_on
-    entity_id:
-      - light.dining_table
-    data:
-      brightness_pct: 80
-
-# ------------------------------------------------------------------------------
 # General
 # ------------------------------------------------------------------------------
 
