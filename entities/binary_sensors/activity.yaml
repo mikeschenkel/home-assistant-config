@@ -29,6 +29,6 @@
       friendly_name: Activity in the hallway
       device_class: motion
       value_template: >
-        {{ is_state("binary_sensor.hallway_motion", "on")
-            or is_state("binary_sensor.hallway_door", "on") }}
+        {{ is_state("binary_sensor.hallway_motion_occupancy", "on")
+            or is_state("binary_sensor.front_door_sensor_contact", "on") }}
       delay_off: "00:01:00"
