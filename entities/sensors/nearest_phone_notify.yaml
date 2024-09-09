@@ -9,7 +9,7 @@
           notify.all_phones
         {% elif is_state("person.mike", "not_home") and is_state("person.wilma", "not_home") %}
           notify.all_phones
-        {% elif is_state_attr("proximity.home", "nearest", "mike-iphone") %}
+        {% elif is_state("sensor.home_nearest_device", "mike-iphone") %}
           notify.mike_phone
         {% else %}
           notify.wilma_phone
