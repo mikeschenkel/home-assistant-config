@@ -24,7 +24,7 @@ switch:
   - platform: template
     name: "${name} Chime"
     id: chime_switch
-    restore_state: false
+    restore_mode: "DISABLED"
     turn_on_action:
       - globals.set:
           id: chime
