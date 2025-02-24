@@ -1,6 +1,0 @@
----
-living_room_ac_runs:
-  name: Living Room AC runs
-  initial: 0
-  step: 1
-  maximum: 5
