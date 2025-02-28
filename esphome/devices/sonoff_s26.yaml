@@ -3,7 +3,7 @@ packages:
   <<: !include_dir_named ../common
   board: !include ../boards/esp01s.yaml
 
-esphome:
+esp8266:
   board_flash_mode: dout
 
 binary_sensor:
