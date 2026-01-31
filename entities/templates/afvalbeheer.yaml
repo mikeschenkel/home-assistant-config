@@ -1,29 +1,16 @@
 ---
-- platform: afvalbeheer
-  wastecollector: Omrin
-  resources:
-    - sortibak
-    - gft
-    - papier
-  postcode: !secret home_postal_code
-  streetnumber: !secret home_house_number
-  upcomingsensor: 1
-  dutch: 1
-  dateformat: "%Y-%m-%d"
-  dateonly: 1
-
-- platform: template
-  sensors:
-    afval_sortibak:
-      unique_id: d9ba37d0-deeb-45f4-a392-62f323eba9c0
-      friendly_name: Sortibak
-      icon_template: mdi:delete-empty
-      value_template: >-
+- sensor:
+    - unique_id: d9ba37d0-deeb-45f4-a392-62f323eba9c0
+      default_entity_id: sensor.afval_sortibak
+      name: Sortibak
+      icon: mdi:delete-empty
+      state: >-
         {%- set tracker_sensor = states('sensor.omrin_sortibak') -%}
         {%- set tracker_timestamp = as_timestamp(tracker_sensor) %}
         {%- set wdays = ["zo", "ma", "di", "wo", "do", "vr", "za"] %}
         {%- set wday =  tracker_timestamp | timestamp_custom('%w') | int %}
-        {%- set months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set _months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set months = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"] -%}
         {%- set month =  tracker_timestamp | timestamp_custom('%m') | int -1 %}
         {%- set tracker_day = tracker_timestamp | timestamp_custom(wdays[wday]) %}
         {%- set tracker_month = tracker_timestamp | timestamp_custom(months[month]) %}
@@ -32,19 +19,20 @@
         {% elif is_state_attr('sensor.omrin_sortibak', 'Days_until', 0) %}Vandaag
         {% else %}{{ tracker_timestamp | timestamp_custom(tracker_day + ' %-d ' + tracker_month) }}
         {% endif %}
-      attribute_templates:
+      attributes:
         days_until: "{{ state_attr('sensor.omrin_sortibak', 'Days_until') }}"
 
-    afval_gft:
-      unique_id: 4ea61b7d-f19a-47ec-9443-ce0ff1a799fd
-      friendly_name: Biobak
-      icon_template: mdi:food-apple
-      value_template: >-
+    - unique_id: 4ea61b7d-f19a-47ec-9443-ce0ff1a799fd
+      default_entity_id: sensor.afval_gft
+      name: Biobak
+      icon: mdi:food-apple
+      state: >-
         {%- set tracker_sensor = states('sensor.omrin_gft') -%}
         {%- set tracker_timestamp = as_timestamp(tracker_sensor) %}
         {%- set wdays = ["zo", "ma", "di", "wo", "do", "vr", "za"] %}
         {%- set wday =  tracker_timestamp | timestamp_custom('%w') | int %}
-        {%- set months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set _months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set months = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"] -%}
         {%- set month =  tracker_timestamp | timestamp_custom('%m') | int -1 %}
         {%- set tracker_day = tracker_timestamp | timestamp_custom(wdays[wday]) %}
         {%- set tracker_month = tracker_timestamp | timestamp_custom(months[month]) %}
@@ -53,19 +41,20 @@
         {% elif is_state_attr('sensor.omrin_gft', 'Days_until', 0) %}Vandaag
         {% else %}{{ tracker_timestamp | timestamp_custom(tracker_day + ' %-d ' + tracker_month) }}
         {% endif %}
-      attribute_templates:
+      attributes:
         days_until: "{{ state_attr('sensor.omrin_gft', 'Days_until') }}"
 
-    afval_papier:
-      unique_id: f8bc7e0f-ffd7-4d61-8502-c5ed5b629ca1
-      friendly_name: Papierbak
-      icon_template: mdi:newspaper
-      value_template: >-
+    - unique_id: f8bc7e0f-ffd7-4d61-8502-c5ed5b629ca1
+      default_entity_id: sensor.afval_papier
+      name: Papierbak
+      icon: mdi:newspaper
+      state: >-
         {%- set tracker_sensor = states('sensor.omrin_papier') -%}
         {%- set tracker_timestamp = as_timestamp(tracker_sensor) %}
         {%- set wdays = ["zo", "ma", "di", "wo", "do", "vr", "za"] %}
         {%- set wday =  tracker_timestamp | timestamp_custom('%w') | int %}
-        {%- set months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set _months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"] -%}
+        {%- set months = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"] -%}
         {%- set month =  tracker_timestamp | timestamp_custom('%m') | int -1 %}
         {%- set tracker_day = tracker_timestamp | timestamp_custom(wdays[wday]) %}
         {%- set tracker_month = tracker_timestamp | timestamp_custom(months[month]) %}
@@ -74,5 +63,5 @@
         {% elif is_state_attr('sensor.omrin_papier', 'Days_until', 0) %}Vandaag
         {% else %}{{ tracker_timestamp | timestamp_custom(tracker_day + ' %-d ' + tracker_month) }}
         {% endif %}
-      attribute_templates:
+      attributes:
         days_until: "{{ state_attr('sensor.omrin_papier', 'Days_until') }}"

@@ -1,0 +1,33 @@
+---
+- binary_sensor:
+    - unique_id: e6de552b-a5ff-44ec-972a-aa7b0804ef72
+      default_entity_id: binary_sensor.motion_detected
+      name: Any motion detected
+      device_class: motion
+      state: >
+        {{ is_state("binary_sensor.activity_in_hallway", "on") }}
+
+    - unique_id: bf22f80b-f3cf-4ced-a5a0-ced5cdebad2d
+      default_entity_id: binary_sensor.motion_detected_in_last_hour
+      name: Any motion detected in last hour
+      device_class: motion
+      state: >
+        {{ is_state("binary_sensor.motion_detected", "on") }}
+      delay_off: "01:00:00"
+
+    - unique_id: 754f8c4b-4a4d-425f-b051-9d4fc72f6acb
+      default_entity_id: binary_sensor.someone_in_the_house_in_last_hour
+      name: Someone in the house in the last hour
+      device_class: motion
+      state: >
+        {{ is_state("binary_sensor.motion_detected_in_last_hour", "on")
+            or is_state("group.persons", "home") }}
+
+    - unique_id: be2c7bc0-cba6-4d21-92ad-34bfae848b66
+      default_entity_id: binary_sensor.activity_in_hallway
+      name: Activity in the hallway
+      device_class: motion
+      state: >
+        {{ is_state("binary_sensor.hallway_motion_occupancy", "on")
+            or is_state("binary_sensor.front_door_sensor_contact", "on") }}
+      delay_off: "00:01:00"

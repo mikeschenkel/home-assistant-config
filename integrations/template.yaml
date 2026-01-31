@@ -1,0 +1,34 @@
+---
+template: !include_dir_merge_list ../entities/templates
+# template:
+#   - sensor:
+#       - name: "Stookwijzer"
+#         unique_id: 5e79642d-7b57-4e26-b289-225c4d79c755
+#         state: >
+#           {% set lki = states('sensor.lki') %}
+#           {% set wind_speed = (state_attr('weather.home', 'wind_speed') | float / 3.6) | round(1) %}
+#           {% if lki | round <= 4 and wind_speed | float > 2 %}blue
+#           {% elif lki | round >= 5 and lki | round <= 7 and wind_speed | float > 2 %}orange
+#           {% else %}red
+#           {% endif %}
+#         icon: >
+#           {% if this.state == "blue" %}mdi:fire
+#           {% else %}mdi:fire-alert
+#           {% endif %}
+#         attributes:
+#           lki: "{{ states('sensor.lki') }}"
+#           wind_speed: "{{ (state_attr('weather.home', 'wind_speed') | float / 3.6) | round(1) }}"
+#           message: >
+#             {% if this.state == "blue" %}Stoken kan, maar houd rekening met de buren
+#             {% elif this.state == "orange" %}Het is beter nu geen hout te stoken
+#             {% else %}Stook geen hout
+#             {% endif %}
+#           message_short: >
+#             {% if this.state == "blue" %}Stoken kan
+#             {% elif this.state == "orange" %}Beter nu niet stoken
+#             {% else %}Stook geen hout
+#             {% endif %}
+#       - name: "Wind Speed in m/s"
+#         unique_id: cb68890b-6c79-4fb4-bc85-0742b801b771
+#         state: "{{ (state_attr('weather.home', 'wind_speed') | float / 3.6) | round(1) }}"
+#         unit_of_measurement: "m/s"

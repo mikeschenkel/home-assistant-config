@@ -1,0 +1,8 @@
+---
+- binary_sensor:
+    - unique_id: 1e5fac6d-30b9-4acb-a286-59d2b691652b
+      default_entity_id: binary_sensor.no_one_home
+      name: No one is home
+      device_class: presence
+      state: >
+        {{ not is_state('person.mike', 'home') and not is_state('person.wilma', 'home') }}

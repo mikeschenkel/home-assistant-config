@@ -1,10 +1,9 @@
 ---
-- platform: template
-  sensors:
-    any_light_on:
-      unique_id: 5774b4b5-43eb-444b-be64-1b84c1593732
-      friendly_name: Any light is on
-      value_template: >
+- binary_sensor:
+    - unique_id: 5774b4b5-43eb-444b-be64-1b84c1593732
+      default_entity_id: binary_sensor.any_light_on
+      name: Any light is on
+      state: >
         {% set hallway_lights_on = is_state("light.hallway_ceiling", "on") %}
         {% set upstairs_hallway_lights_on = is_state("light.upstairs_hallway_ceiling", "on") %}
         {% set attic_lights_on = is_state("light.attic_ceiling", "on") %}
