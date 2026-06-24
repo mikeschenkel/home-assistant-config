@@ -1,0 +1,14 @@
+---
+substitutions:
+  name: Sonoff-Basic-01
+  slug: sonoff-basic-01
+  description: Sonoff Basic Relay
+
+wifi:
+  manual_ip:
+    static_ip: 192.168.1.168
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+
+packages:
+  device: !include devices/sonoff_basic.yaml
