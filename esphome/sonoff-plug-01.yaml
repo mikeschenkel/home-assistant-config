@@ -1,0 +1,14 @@
+---
+substitutions:
+  name: Sonoff-Plug-01
+  slug: sonoff-plug-01
+  description: Sonoff Plug Relay
+
+wifi:
+  manual_ip:
+    static_ip: 192.168.1.169
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+
+packages:
+  device: !include devices/sonoff_s26.yaml
