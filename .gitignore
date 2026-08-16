@@ -7,6 +7,13 @@
 *.csv
 *.conf
 
+# Runtime lock/cache
+.ha_run.lock
+.ha_run_lock
+.cache
+__pycache__
+*.pyc
+
 # Directory (contents) ignores
 .vscode
 .cloud
@@ -17,11 +24,9 @@ image
 
 # Built-in blueprints ignores
 blueprints/*/homeassistant
-blueprints/*/ui_lovelace_minimalist
 
 # Vendored ignores
 custom_components/*/*
-
 # Add these anyway
 !custom_components/*/manifest.json
 
@@ -30,3 +35,10 @@ ip_bans.yaml
 secrets.yaml
 mqtt_dump.txt
 watchman_report.txt
+
+# Camera snapshots
+www/camera_snapshots
+
+# OS junk
+.DS_Store
+Thumbs.db
