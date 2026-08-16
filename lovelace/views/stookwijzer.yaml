@@ -1,0 +1,40 @@
+---
+title: "Stookwijzer"
+path: "stookwijzer"
+icon: mdi:fire
+visible: false
+# subview: true
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: back
+  - type: vertical-stack
+    cards:
+      - type: custom:mushroom-title-card
+        title: "Stookwijzer"
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: entities
+            entities:
+              - entity: binary_sensor.stookalert_friesland
+                name: "Stookalert"
+              - entity: sensor.lki
+                name: LKI
+              - entity: sensor.wind_speed_in_m_s
+                name: Windsnelheid
+                suffix: m/s
+          - type: custom:text-divider-row
+            text: Advies
+            align: center
+          - type: markdown
+            content: |
+              {% if is_state('sensor.stookwijzer', 'blue') %}{% set alert_type = "info" %}
+              {% elif is_state('sensor.stookwijzer', 'orange') %}{% set alert_type = "warning" %}
+              {% else %}{% set alert_type = "error" %}
+              {% endif %}
+              <ha-alert alert-type="{{ alert_type }}">
+              {{ state_attr('sensor.stookwijzer', 'message')}}
+              </ha-alert>
