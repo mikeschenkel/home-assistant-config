@@ -5,4 +5,3 @@ all_heaters:
     - climate.living_room
     - climate.office
     - climate.bathroom
-    - climate.bedroom
